@@ -4,13 +4,18 @@ public class Variables {
 
 	public static void main(String[] args) {
 		double s = 3.14 ; // 64-bit floating point integer
-		int num ; // 32-bit integer
-		char ch ; // 16-bit 
-		short sh ; // 16-bit integer
-		long bgnum ; // 64-bit integer
-		byte shnum ; // 8-bit integer
+		int num = 0 ; // 32-bit integer
+		char ch = '.' ; // 16-bit
+		short sh = 0 ; // 16-bit integer
+		long bgnum = 0 ; // 64-bit integer
+		byte shnum = 0 ; // 8-bit integer
 		
-		System.out.print( "s = " + s ) ;
+		System.out.println( "s = " + s ) ;
+		System.out.println( "num = " + num ) ;
+		System.out.println( "ch = " + ch ) ;
+		System.out.println( "sh = " + sh ) ;
+		System.out.println( "bgnum = " + bgnum ) ;
+		System.out.println( "shnum = " + shnum ) ;
 	}
 	
 }
