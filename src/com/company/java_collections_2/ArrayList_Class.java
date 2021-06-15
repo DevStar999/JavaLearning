@@ -33,6 +33,17 @@ public class ArrayList_Class {
 		for(int i=0 ; i<5 ; i++) { ltemp.add(i+20) ; }
 		l1.retainAll(ltemp) ;
 //		print_collection(l1) ;
+
+		// Anonymous Inner Class initialization for ArrayList
+		ArrayList<Integer> l3 = new ArrayList<Integer>(){{
+			add(17);
+			add(23);
+			add(5);
+		}};
+		System.out.println("l3 ArrayList is as follows :");
+		for (Integer el: l3) {
+			System.out.println(el);
+		}
 	}
 
 }
