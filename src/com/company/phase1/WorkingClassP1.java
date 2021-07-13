@@ -2,7 +2,7 @@ package com.company.phase1;
 
 import java.util.EnumSet; // Importing this package to get the range() method for our use.
 
-public class WorkingClassP2 {
+public class WorkingClassP1 {
     public static void main(String[] args) {
         /*
         Time ob = new Time(17, 45, 51);
