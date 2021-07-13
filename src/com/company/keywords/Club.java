@@ -1,4 +1,4 @@
-package com.company.phase3;
+package com.company.keywords;
 
 // This class is used as a utility class for the class 'Static_Keyword'.
 public class Club {

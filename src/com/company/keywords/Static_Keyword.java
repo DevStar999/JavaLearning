@@ -1,4 +1,4 @@
-package com.company.phase3;
+package com.company.keywords;
 
 public class Static_Keyword {
 	/* Static variables - 	(i) When a variable is declared as static, then a single copy 
