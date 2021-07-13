@@ -5,8 +5,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Regex {
-
+public class Regex2 {
     public static List<String> giveAllMatchesOfGroup(String regexPattern, String text, Integer groupNumber) {
         List<String> ans = new ArrayList<>();
 
