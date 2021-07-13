@@ -1,4 +1,4 @@
-package com.company.phase2;
+package com.company.phase1;
 
 import java.util.EnumSet; // Importing this package to get the range() method for our use.
 

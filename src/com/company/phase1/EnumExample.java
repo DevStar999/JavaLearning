@@ -1,4 +1,4 @@
-package com.company.phase2;
+package com.company.phase1;
 
 //	A simple enum example where enum is declared outside any class. 
 // 	Note : Here, enum keyword is used instead of class keyword.

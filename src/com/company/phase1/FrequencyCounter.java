@@ -1,5 +1,5 @@
 // Frequency counter for the roll of dice.
-package com.company.phase2;
+package com.company.phase1;
 
 import java.util.Random;
 

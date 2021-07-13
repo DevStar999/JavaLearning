@@ -1,4 +1,4 @@
-package com.company.phase2;
+package com.company.phase1;
 
 public enum BioEnum {
     Vinay("Good", "20"),

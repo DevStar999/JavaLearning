@@ -1,4 +1,4 @@
-package com.company.phase2;
+package com.company.phase1;
 
 public class VariableLengthArgument {
     public static int average(int... numbers) {
