@@ -1,4 +1,4 @@
-package com.company.phase2;
+package com.company.arrays;
 
 public class Arrays {
 
@@ -18,7 +18,7 @@ public class Arrays {
 		}
 	}
 
-	
+
 	public static void update(int a[]) {
 		for(int i=0 ; i<a.length ; i++) {
 			a[i] += 10 ;

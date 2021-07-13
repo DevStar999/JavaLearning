@@ -1,4 +1,4 @@
-package com.company.phase2;
+package com.company.arrays;
 
 public class Multi_Dimensional_Arrays {
 
