@@ -1,7 +1,7 @@
 package com.company.filehandling;
 
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.util.Formatter;
 
 public class CreatingFiles {
     public static void main(String[] args) {
