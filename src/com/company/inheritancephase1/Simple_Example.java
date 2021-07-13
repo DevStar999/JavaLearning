@@ -22,9 +22,9 @@ public class Simple_Example {
 		twoObject.print_one() ;
 		twoObject.print_two() ;
 		
-		Protected_Keyword_ip1 obj = new Protected_Keyword_ip1() ;
+		ProtectedKeywordIP1 obj = new ProtectedKeywordIP1() ;
 		// Since, access modifier for this method is 'protected' it is accessible within the same package. 
-		obj.display_pkip1() ;
+		obj.displayPkip1() ;
 	}
 
 }
