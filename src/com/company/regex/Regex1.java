@@ -1,4 +1,4 @@
-package com.company.utility;
+package com.company.regex;
 
 import javafx.util.Pair;
 import org.jsoup.Jsoup;
@@ -13,8 +13,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class utilityFunctionsSet2 {
-
+public class Regex1 {
     public static List<Pair<String, String>> giveAllMatchesOfGroup(String regexPattern, String text,
                                                                    Integer groupNumber1, Integer groupNumber2) {
         List<Pair<String, String>> ans = new ArrayList<>();
@@ -23,7 +22,7 @@ public class utilityFunctionsSet2 {
         Matcher matcher = pattern.matcher(text);
 
         while (matcher.find()) {
-            ans.add(new Pair<> (matcher.group(groupNumber1), matcher.group(groupNumber2)));
+            ans.add(new Pair<>(matcher.group(groupNumber1), matcher.group(groupNumber2)));
         }
 
         return ans;
@@ -44,7 +43,7 @@ public class utilityFunctionsSet2 {
         // Parsing the html to create a pair of (Name, Image Src) as follows -
         String regexPattern = "<img alt=\"(.*?)\"(.*?)src=\"(.*?)\"(.*?)>";
         List<Pair<String, String>> celebsInfo = giveAllMatchesOfGroup(regexPattern, result, 1, 3);
-        for (Pair<String, String> element: celebsInfo) {
+        for (Pair<String, String> element : celebsInfo) {
             System.out.println("Name = " + element.getKey() + ", ImageSrc = " + element.getValue());
         }
 
@@ -59,5 +58,4 @@ public class utilityFunctionsSet2 {
             e.printStackTrace();
         }
     }
-
 }
