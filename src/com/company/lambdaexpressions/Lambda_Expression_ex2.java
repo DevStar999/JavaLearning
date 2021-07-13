@@ -1,4 +1,4 @@
-package com.company.lamdaexpressions;
+package com.company.lambdaexpressions;
 
 interface FunctionalInterface_v2{
 	int operation(int a, int b) ;
