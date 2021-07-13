@@ -1,29 +1,31 @@
 package com.company.keywords;
 
-public class Final_Keyword_Utility {
-	/** About Final Variables **/
+public class FinalKeywordUtility {
+    /**
+     * About Final Variables
+     **/
     // A final variable, direct initialization. 
-    final int THRESHOLD = 5 ; 
-      
+    final int THRESHOLD = 5;
+
     // A blank final variable. 
-    final int CAPACITY ; 
-      
+    final int CAPACITY;
+
     // A final static variable PI, direct initialization.
-    static final double PI = 3.1415 ; 
-      
+    static final double PI = 3.1415;
+
     // A blank final static variable. 
-    static final double EULERCONSTANT ; 
-      
+    static final double EULERCONSTANT;
+
     // Instance initializer block for initializing CAPACITY. 
-    { 
-        CAPACITY = 25 ; 
-    } 
-      
+    {
+        CAPACITY = 25;
+    }
+
     // Static initializer block for initializing EULERCONSTANT. 
-    static{ 
-        EULERCONSTANT = 2.3 ; 
-    } 
-    
+    static {
+        EULERCONSTANT = 2.3;
+    }
+
     /** About Final Methods - Most commonly used to prevent method overriding **/
     /*
     class A {
@@ -38,7 +40,7 @@ public class Final_Keyword_Utility {
         }
     }
     */
-    
+
     /** About Final Methods - Used to prevent inheritance and make the class immutable **/ 
     /*
     final class A{
