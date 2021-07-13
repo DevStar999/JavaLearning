@@ -1,4 +1,4 @@
-package com.company.inheritance_p1;
+package com.company.inheritancephase1;
 
 public class Protected_Keyword_ip1 {
 

@@ -1,8 +1,8 @@
-package com.company.inheritance_p2;
+package com.company.inheritancephase2;
 
-import com.company.inheritance_p1.* ;
+import com.company.inheritancephase1.* ;
 
-// Sub-Class of class 'Protected_Keyword_ip1' which is from a different package namely 'inheritance_p1'.
+// Sub-Class of class 'Protected_Keyword_ip1' which is from a different package namely 'inheritancephase1'.
 public class Protected_Keyword_ip2 extends Protected_Keyword_ip1{
 
 	protected void display_pkip2() {

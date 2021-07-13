@@ -1,4 +1,4 @@
-package com.company.inheritance_p1;
+package com.company.inheritancephase1;
 
 // Super-Class.
 class one { 
