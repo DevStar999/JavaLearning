@@ -20,13 +20,16 @@ public class Regex {
         return ans;
     }
 
-    public static <T> void printList(List<T> list) {
+    public static <T> void printList(String listName, List<T> list) {
         String ans = "";
-        ans += "[" ;
-        for(T el: list) {ans += el.toString() + ", " ;}
-        ans = ans.substring(0,ans.length()-2);
-        ans += "]" ;
-        System.out.println(ans) ;
+        ans += "[";
+        for (T el : list) {
+            ans += el.toString() + ", ";
+        }
+        ans = ans.substring(0, ans.length() - 2);
+        ans += "]";
+        System.out.println("The contents of list - " + listName + " are as follows: ");
+        System.out.println(ans);
     }
 
     public static void main(String[] args) {
@@ -36,6 +39,8 @@ public class Regex {
         String regexPattern1 = "Mi(.*?)pi";
         List<String> ans1 = giveAllMatchesOfGroup(regexPattern1, river1, 1);
         List<String> ans2 = giveAllMatchesOfGroup(regexPattern1, river2, 1);
+        printList("ans1", ans1);
+        printList("ans2", ans2);
 
         // Example of working with HTML of a site
         String text = "<img alt=\"Arnold Schwarzenegger\" height=\"209\" " +
@@ -44,7 +49,7 @@ public class Regex {
         String regexPattern2 = "<img alt=\"(.*?)\"(.*?)src=\"(.*?)\"(.*?)>";
         List<String> name = giveAllMatchesOfGroup(regexPattern2, text, 1);
         List<String> url = giveAllMatchesOfGroup(regexPattern2, text, 3);
-        printList(name);
-        printList(url);
+        printList("name", name);
+        printList("url", url);
     }
 }
