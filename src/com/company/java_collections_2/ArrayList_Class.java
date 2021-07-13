@@ -26,7 +26,7 @@ public class ArrayList_Class {
 		
 		/** Common ArrayList Class Methods are follows (Excluding those which were mentioned before) **/
 		/** Method Support From : Collection, List **/
-		/* (1) retainAll​(Collection c) - Retains only the elements in 'this' list that are contained 
+		/* (1) retainAll(Collection c) - Retains only the elements in 'this' list that are contained
 			   in the specified collection.
 		*/
 		ArrayList<Integer> ltemp = new ArrayList<>() ;
@@ -35,15 +35,24 @@ public class ArrayList_Class {
 //		print_collection(l1) ;
 
 		// Anonymous Inner Class initialization for ArrayList
-		ArrayList<Integer> l3 = new ArrayList<Integer>(){{
+		ArrayList<Integer> l3 = new ArrayList<>(){{
 			add(17);
 			add(23);
 			add(5);
 		}};
 		System.out.println("l3 ArrayList is as follows :");
 		for (Integer el: l3) {
-			System.out.println(el);
+			System.out.print(el + " ");
 		}
+		System.out.println();
+
+		// Initialising an ArrayList using Arrays.asList()
+		ArrayList<Integer> l4 = new ArrayList<>(Arrays.asList(2,5,6,234,623,63,1));
+		System.out.println("l4 ArrayList is as follows :");
+		for (Integer el: l4) {
+			System.out.print(el + " ");
+		}
+		System.out.println();
 	}
 
 }
