@@ -5,8 +5,8 @@ public class WorkingClassFH {
 		/*
 		OverwritingFiles of = new OverwritingFiles() ;
 		of.openFile() ;
-		of.add_record("20", "Vinay", "Nagalgaonkar") ;
-		of.close_file() ; 
+		of.addRecord("20", "Vinay", "Nagalgaonkar") ;
+		of.closeFile() ;
 		
 		System.out.println("Reached end of program") ;
 		*/

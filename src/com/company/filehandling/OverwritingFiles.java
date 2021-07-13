@@ -13,11 +13,11 @@ public class OverwritingFiles {
         }
     }
 
-    public void add_record(String field1, String field2, String field3) {
+    public void addRecord(String field1, String field2, String field3) {
         fm.format("%s %s %s", field1, field2, field3);
     }
 
-    public void close_file() {
+    public void closeFile() {
         fm.close();
     }
 }
