@@ -27,5 +27,20 @@ public class CollectionsMethods2 {
         Collections.reverse(listReverse);
         System.out.println("\nAfter Reversing");
         print_collection(listReverse);
+
+        /* Collections.shuffle(collection) - Randomly permutes the specified list using a default source of randomness.
+           All permutations occur with approximately equal likelihood.
+        */
+        ArrayList<Integer> listShuffle = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            listShuffle.add(i + 10);
+        }
+
+        System.out.println("Before Shuffling");
+        print_collection(listShuffle);
+
+        Collections.shuffle(listShuffle);
+        System.out.println("\nAfter Shuffling");
+        print_collection(listShuffle);
     }
 }

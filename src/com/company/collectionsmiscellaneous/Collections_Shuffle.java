@@ -13,15 +13,7 @@ public class Collections_Shuffle {
 	}
 
 	public static void main(String[] args) {
-		ArrayList<Integer> lt = new ArrayList<Integer>() ;
-		for(int i=0 ; i<10 ; i++) { lt.add(i+10) ; }
-		
-		System.out.println("Before Shuffling") ;
-		print_collection( lt ) ;
 
-		Collections.shuffle(lt) ;
-		System.out.println("\nAfter Shuffling") ;
-		print_collection( lt ) ;	
 	}
 
 }
