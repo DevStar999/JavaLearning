@@ -1,6 +1,4 @@
-package com.company.phase4;
-
-import java.util.* ; 
+package com.company.lamdaexpressions;
 
 interface FunctionalInterface_v2{
 	int operation(int a, int b) ;

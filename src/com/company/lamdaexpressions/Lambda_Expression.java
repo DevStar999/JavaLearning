@@ -1,4 +1,4 @@
-package com.company.phase4;
+package com.company.lamdaexpressions;
 
 interface inf{
 	void show(int i) ;
