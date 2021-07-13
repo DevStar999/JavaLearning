@@ -1,6 +1,6 @@
 package com.company.rough;
 
-public class rough17 {
+public class Rough13 {
 	public static void main(String[] args) {
 
 	}

@@ -4,7 +4,7 @@ package com.company.rough;
 
 import java.util.Random;
 
-public class rough15 {
+public class Rough15 {
     public int a, b;
 
     public void set_data(int a, int b) {
