@@ -1,21 +1,19 @@
-package com.company.phase1;
+package com.company.start;
 
 import java.util.Scanner;
 
-public class User_Input {
+public class UserInput {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        String str1 = input.nextLine();
+        int val = input.nextInt();
+        input.nextLine();
+        String str2 = input.nextLine();
 
-	public static void main(String[] args) {
-		Scanner input = new Scanner(System.in);
-		String str1 = input.nextLine();
-		int val = input.nextInt(); 
-		input.nextLine();
-		String str2 = input.nextLine();
-		
-		System.out.println("message1 = " + str1);	
-		System.out.println("message2 = " + str2);	
-		System.out.println("val = " + val);
-	}
-	
+        System.out.println("message1 = " + str1);
+        System.out.println("message2 = " + str2);
+        System.out.println("val = " + val);
+    }
 }
 
 /*  Note  : (1) next() method will read the string from STDIN only till space. 
