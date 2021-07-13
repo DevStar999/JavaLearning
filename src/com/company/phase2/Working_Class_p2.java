@@ -16,14 +16,14 @@ public class Working_Class_p2 {
 		System.out.println(me) ;
 */
 		System.out.println("The enum constants are as follows :") ;
-		for(Bio people: Bio.values()) {
-			System.out.printf("%s\t\t%s\t\t%s\n", people, people.get_desc() , people.get_age()) ;
+		for(BioEnum people: BioEnum.values()) {
+			System.out.printf("%s\t\t%s\t\t%s\n", people, people.getDesc() , people.getAge()) ;
 		}
 		System.out.println() ;
 		
 		System.out.println("The enum constants in a specific range from 'Meet' to 'Maan' are as follows :") ;
-		for(Bio people: EnumSet.range(Bio.Meet, Bio.Maan) ){
-			System.out.printf("%s\t\t%s\t\t%s\n", people, people.get_desc() , people.get_age()) ;
+		for(BioEnum people: EnumSet.range(BioEnum.Meet, BioEnum.Maan) ){
+			System.out.printf("%s\t\t%s\t\t%s\n", people, people.getDesc() , people.getAge()) ;
 		}
 		System.out.println() ;		
 	
