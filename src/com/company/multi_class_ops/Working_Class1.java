@@ -11,7 +11,7 @@ public class Working_Class1 {
 	public static void main(String[] args){
 		Scanner input =  new Scanner(System.in) ;
 		
-		Utility_Class1 ob = new Utility_Class1() ; 
+		UtilityClass1 ob = new UtilityClass1() ;
 		// Always initialize the class object with new and the class name followed by brackets.
 		ob.print1() ;
 		
@@ -26,7 +26,7 @@ public class Working_Class1 {
 		ob.greet() ; 
 		*/
 		
-		Utility_Class1 ob1 = new Utility_Class1("Meet Mehta") ;
+		UtilityClass1 ob1 = new UtilityClass1("Meet Mehta") ;
 		ob1.greet() ;
 	}
 
