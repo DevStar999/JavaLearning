@@ -1,4 +1,4 @@
-package com.company.javastreams;
+package com.company.streams;
 
 import java.util.Arrays;
 import java.util.IntSummaryStatistics;
