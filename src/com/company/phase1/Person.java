@@ -1,6 +1,6 @@
 package com.company.phase1;
 
-import dateandtime.Date;
+import com.company.dateandtime.Date;
 
 public class Person {
     private String name;

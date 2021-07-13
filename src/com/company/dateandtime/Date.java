@@ -1,4 +1,4 @@
-package dateandtime;
+package com.company.dateandtime;
 
 public class Date {
     private int day, month, year;

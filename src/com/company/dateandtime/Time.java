@@ -1,4 +1,4 @@
-package dateandtime;
+package com.company.dateandtime;
 
 public class Time {
     private int hour, minute, second;

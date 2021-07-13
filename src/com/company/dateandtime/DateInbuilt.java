@@ -1,4 +1,4 @@
-package dateandtime;
+package com.company.dateandtime;
 
 import java.util.Date;
 
