@@ -1,4 +1,4 @@
-package com.company.rough;
+package com.company.phase1;
 
 public class Foo {
     private String str;
