@@ -1,4 +1,4 @@
-package com.company.collections2;
+package com.company.collectionsmiscellaneous.iterator;
 
 import java.util.* ;
 

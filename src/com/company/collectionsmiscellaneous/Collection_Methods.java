@@ -1,4 +1,4 @@
-package com.company.collections;
+package com.company.collectionsmiscellaneous;
 
 import java.util.* ;
 
