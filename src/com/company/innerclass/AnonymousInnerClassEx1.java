@@ -1,4 +1,4 @@
-package com.company.inner_class;
+package com.company.innerclass;
 
 class Utility {
     void show() {
