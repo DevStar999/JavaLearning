@@ -1,4 +1,4 @@
-package com.company.phase2;
+package dateandtime;
 
 public class Date {
 	private int day, month, year ;

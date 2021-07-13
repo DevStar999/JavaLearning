@@ -1,4 +1,4 @@
-package com.company.phase2;
+package dateandtime;
 
 public class Time {
 	private int hour, minute, second ;

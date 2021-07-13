@@ -1,5 +1,7 @@
 package com.company.phase2;
 
+import dateandtime.Date;
+
 public class Person {
 	private String name ;
 	private Date birthday ;
