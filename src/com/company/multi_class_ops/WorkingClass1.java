@@ -2,7 +2,7 @@ package com.company.multi_class_ops;
 
 import java.util.Scanner;
 
-import com.company.phase1.Switch_Case; // Importing specifically the class - Switch_Case from the package - phase1.
+import com.company.start.SwitchCase;
 
 //This can be done as follows too :
 /*
@@ -16,9 +16,9 @@ public class WorkingClass1 {
         // Always initialize the class object with new and the class name followed by brackets.
         ob.print1();
 
-        Switch_Case sw_ob = new Switch_Case();
-        // Switch_Case class is from another package. However, is it has been imported for use (using line 5).
-        sw_ob.simple_message();
+        SwitchCase switchCaseObject = new SwitchCase();
+        // SwitchCase class is from another package. However, is it has been imported for use (using line 5).
+        switchCaseObject.simpleMessage();
 
         /*
         System.out.print("Enter your name here : ");

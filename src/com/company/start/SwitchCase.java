@@ -1,10 +1,9 @@
-package com.company.phase1;
+package com.company.start;
 
-public class Switch_Case {
-	public void simple_message() {
-		System.out.println("This function is from Switch_Case Class");
+public class SwitchCase {
+	public void simpleMessage() {
+		System.out.println("This function is from SwitchCase Class");
 	}
-
 	public static void main(String[] args) {
 		int age = 1;
 		
@@ -26,7 +25,5 @@ public class Switch_Case {
 				break;
 			}
 		}
-		
 	}
-
 }
