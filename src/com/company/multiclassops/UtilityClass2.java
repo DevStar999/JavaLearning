@@ -1,4 +1,4 @@
-package com.company.multi_class_ops;
+package com.company.multiclassops;
 
 public class UtilityClass2 {
     public void m1(int i) {

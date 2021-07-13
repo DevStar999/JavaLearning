@@ -1,4 +1,4 @@
-package com.company.multi_class_ops;
+package com.company.multiclassops;
 
 import java.util.Scanner;
 
