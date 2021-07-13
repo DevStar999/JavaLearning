@@ -1,4 +1,4 @@
-package com.company.phase3;
+package com.company.phase1;
 
 // A simple interface. 
 interface in1 { 
