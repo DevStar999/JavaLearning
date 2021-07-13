@@ -1,14 +1,12 @@
-package com.company.exception_handling;
+package com.company.exceptionhandling;
 
-public class Try_Catch_Finally_eg1 {
+public class Try_Catch_Finally_eg2 {
 
 	public static void main(String[] args) {
-		int arr[] = new int[4] ;
-		
 		// try-catch-finally clause is as follows.
 		try{ 
-			int i = arr[4] ;
-			// This statement will not be printed as the index - 4 is out of bound.
+			int num = 16/0 ; 
+			// This statement will not be printed as division by zero is done above.
 	        System.out.println("Inside 'try' block") ; 
 		}     
 		catch(ArithmeticException ex) {
