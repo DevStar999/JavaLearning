@@ -1,4 +1,4 @@
-package com.company.collections;
+package com.company.collections2.queue;
 
 import java.util.* ;
 
