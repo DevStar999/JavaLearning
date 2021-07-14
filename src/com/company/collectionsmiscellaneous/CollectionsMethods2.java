@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 public class CollectionsMethods2 {
-    public static <T> void print_collection(Collection<T> col) {
+    public static <T> void printCollection(Collection<T> col) {
         System.out.println("The elements of the Collection are as follows :");
         for (T el : col) {
             System.out.print(el + " ");
@@ -22,11 +22,11 @@ public class CollectionsMethods2 {
             listReverse.add(i + 10);
         }
         System.out.println("Before Reversing");
-        print_collection(listReverse);
+        printCollection(listReverse);
 
         Collections.reverse(listReverse);
         System.out.println("\nAfter Reversing");
-        print_collection(listReverse);
+        printCollection(listReverse);
 
         /* Collections.shuffle(collection) - Randomly permutes the specified list using a default source of randomness.
            All permutations occur with approximately equal likelihood.
@@ -37,11 +37,11 @@ public class CollectionsMethods2 {
         }
 
         System.out.println("Before Shuffling");
-        print_collection(listShuffle);
+        printCollection(listShuffle);
 
         Collections.shuffle(listShuffle);
         System.out.println("\nAfter Shuffling");
-        print_collection(listShuffle);
+        printCollection(listShuffle);
 
         /* (i) Collections.sort(collection) - Sorts the specified list into ascending order, according to the natural 
            ordering of its elements. All elements in the list must implement the Comparable interface. Furthermore, 
@@ -60,23 +60,25 @@ public class CollectionsMethods2 {
 
         System.out.println("After sorting in ascending order in 'listSortedAscending'");
         Collections.sort(listSortedAscending);
-        print_collection(listSortedAscending);
+        printCollection(listSortedAscending);
 
         System.out.println("\nAfter sorting in descending order in 'listSortedDescending'");
         Collections.sort(listSortedDescending, Collections.reverseOrder());
-        print_collection(listSortedDescending);
+        printCollection(listSortedDescending);
 
         /* Collections.swap(collection, index1, index2) - Swaps the elements at the specified positions in the
            specified list. (If the specified positions are equal, invoking this method leaves the list unchanged.)
          */
-        ArrayList<Integer> listSwap = new ArrayList<>() ;
-        for(int i=0 ; i<10 ; i++) { listSwap.add(i+10) ; }
+        ArrayList<Integer> listSwap = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            listSwap.add(i + 10);
+        }
 
-        System.out.println("Before Swapping at indices 1 and 3 in the Collection 'listSwap'") ;
-        print_collection( listSwap ) ;
+        System.out.println("Before Swapping at indices 1 and 3 in the Collection 'listSwap'");
+        printCollection(listSwap);
 
-        Collections.swap(listSwap, 1, 3) ;
-        System.out.println("\nAfter Swapping at indices 1 and 3 in the Collection 'listSwap'") ;
-        print_collection( listSwap ) ;
+        Collections.swap(listSwap, 1, 3);
+        System.out.println("\nAfter Swapping at indices 1 and 3 in the Collection 'listSwap'");
+        printCollection(listSwap);
     }
 }
