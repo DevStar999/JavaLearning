@@ -62,7 +62,7 @@ public class CollectionsMethods2 {
         Collections.sort(listSortedAscending);
         print_collection(listSortedAscending);
 
-        System.out.println("\nAfter sorting in descending order in 'lt1'");
+        System.out.println("\nAfter sorting in descending order in 'listSortedDescending'");
         Collections.sort(listSortedDescending, Collections.reverseOrder());
         print_collection(listSortedDescending);
 
