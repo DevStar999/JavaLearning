@@ -1,6 +1,7 @@
 package com.company.collections.list;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
@@ -49,5 +50,24 @@ public class ListInterface {
 		       between start(inclusive) and end(exclusive). 
 		*/
         List<Integer> subList1 = list1.subList(2, 5); // It will return the sublist from index 2 to 4(both inclusive).
+
+        // (V) Remove common elements from one list that are present in another list
+		/* (1) removeIf(<List object>::contains) - Removes all of the elements of this collection that satisfy the
+		       given predicate. Errors or runtime exceptions thrown during iteration or by the predicate are relayed
+		       to the caller.
+		*/
+        List<String> list01 = new ArrayList<>(Arrays.asList("duck", "luck", "boy", "girl"));
+        System.out.println("The elements of the list01 are as follows :");
+        System.out.println(list01.toString());
+
+        List<String> list02 = new ArrayList<>(Arrays.asList("duck", "luck"));
+        System.out.println("The elements of the list02 are as follows :");
+        System.out.println(list02.toString());
+
+        // Magical line of code that gives us: list01 = list01 - list02
+        list01.removeIf(list02::contains);
+
+        System.out.println("The elements of the list 'list01' not in 'list02' are as follows :");
+        System.out.println(list01.toString());
     }
 }
