@@ -13,15 +13,7 @@ public class Collections_Swapping {
 	}	
 	
 	public static void main(String[] args) {
-		ArrayList<Integer> lt = new ArrayList<Integer>() ;
-		for(int i=0 ; i<10 ; i++) { lt.add(i+10) ; }
-		
-		System.out.println("Before Swapping at indices 1 and 3 in the Collection 'lt'") ;
-		print_collection( lt ) ;
 
-		Collections.swap(lt, 1, 3) ;
-		System.out.println("\nAfter Swapping at indices 1 and 3 in the Collection 'lt'") ;
-		print_collection( lt ) ;	
 	}
 	
 }

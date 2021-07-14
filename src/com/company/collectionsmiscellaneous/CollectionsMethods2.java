@@ -65,5 +65,18 @@ public class CollectionsMethods2 {
         System.out.println("\nAfter sorting in descending order in 'lt1'");
         Collections.sort(listSortedDescending, Collections.reverseOrder());
         print_collection(listSortedDescending);
+
+        /* Collections.swap(collection, index1, index2) - Swaps the elements at the specified positions in the
+           specified list. (If the specified positions are equal, invoking this method leaves the list unchanged.)
+         */
+        ArrayList<Integer> listSwap = new ArrayList<>() ;
+        for(int i=0 ; i<10 ; i++) { listSwap.add(i+10) ; }
+
+        System.out.println("Before Swapping at indices 1 and 3 in the Collection 'listSwap'") ;
+        print_collection( listSwap ) ;
+
+        Collections.swap(listSwap, 1, 3) ;
+        System.out.println("\nAfter Swapping at indices 1 and 3 in the Collection 'listSwap'") ;
+        print_collection( listSwap ) ;
     }
 }
