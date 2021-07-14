@@ -13,17 +13,7 @@ public class Collections_Sorting {
 	}	
 	
 	public static void main(String[] args) {
-		ArrayList<Integer> lt1 = new ArrayList<>() ;
-		ArrayList<Integer> lt2 = new ArrayList<>() ;
-		for(int i=0 ; i<10 ; i++) { lt1.add(i+10) ; lt2.add(i+55) ; }
-		
-		System.out.println("After sorting in ascending order in 'lt1'") ;
-		Collections.sort(lt1) ;
-		print_collection( lt1 ) ;
 
-		System.out.println("\nAfter sorting in descending order in 'lt1'") ;
-		Collections.sort(lt1, Collections.reverseOrder()) ;
-		print_collection( lt1 ) ;
 	}
 	
 }
