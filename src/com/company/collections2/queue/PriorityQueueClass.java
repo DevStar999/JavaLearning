@@ -124,5 +124,22 @@ public class PriorityQueueClass {
 		 	   sorted set. 
 		*/
         PriorityQueue<Integer> priorityQueue9 = new PriorityQueue<>(sortedSet);
+
+        /** Commonly used methods of PriorityQueue Class **/
+        PriorityQueue<String> pq = new PriorityQueue<>();
+
+        // (1) offer() - Adding elements to the queue (Note : Instead of the method offer(), add() can also be used).
+        pq.offer("first");
+        pq.offer("second");
+        pq.offer("third");
+        System.out.printf("%s ", pq);
+        System.out.println();
+
+        // (2) peek() - Peeking at the front element of the queue.
+        System.out.printf("TOP = %s\n", pq.peek());
+
+        // (3) poll() - Removing an element from the queue.
+        pq.poll();
+        System.out.printf("%s ", pq);
     }
 }
