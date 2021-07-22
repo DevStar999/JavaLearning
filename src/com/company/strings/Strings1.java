@@ -14,6 +14,15 @@ public class Strings1 {
                 (str1 != null && str1.length() > 0) ? str1.substring(0, str1.length() - 1) : str1;
         System.out.println("str1LastCharRemovedWithChecks = " + str1LastCharRemovedWithChecks);
 
+        /* Remove first character from a string (WITHOUT null check and length check) */
+        String str1FirstCharRemoved = str1.substring(1);
+        System.out.println("str1FirstCharRemoved = " + str1FirstCharRemoved);
+
+        /* Remove first character from a string (WITH null check and length check) */
+        String str1FirstCharRemovedWithChecks =
+                (str1 != null && str1.length() > 0) ? str1.substring(1) : str1;
+        System.out.println("str1FirstCharRemovedWithChecks = " + str1FirstCharRemovedWithChecks);
+
         // Trick to capitalize the first letter of the string and keep other characters of lower-case.
         String cap = "vInaY";
         cap = (cap.toUpperCase()).substring(0, 1) + (cap.toLowerCase()).substring(1);
