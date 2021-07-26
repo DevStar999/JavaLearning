@@ -25,7 +25,7 @@ public class Strings1 {
 
         // Trick to capitalize the first letter of the string and keep other characters of lower-case.
         String cap = "vInaY";
-        cap = (cap.toUpperCase()).substring(0, 1) + (cap.toLowerCase()).substring(1);
+        cap = (cap.toUpperCase()).charAt(0) + (cap.toLowerCase()).substring(1);
         System.out.println("\ncap = " + cap);
 
         // String reverse.
