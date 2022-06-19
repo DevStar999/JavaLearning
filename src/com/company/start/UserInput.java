@@ -21,5 +21,5 @@ public class UserInput {
  			(2) When taking input for string by nextLine() method after taking input for an integer, double etc.,
  				flush the input buffer having the new line character by taking it in the Scanner class variable i.e.
  				the object('input' in this case) and then actually take input for string in the desired string
- 				variable. Lines 10-12 illustrate this point.
+ 				variable. Lines 9-11 illustrate this point.
 */
