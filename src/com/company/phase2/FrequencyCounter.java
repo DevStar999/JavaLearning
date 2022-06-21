@@ -14,7 +14,7 @@ public class FrequencyCounter {
 
         System.out.println("Face\tFrequency");
         for (int face = 1; face < freq.length; face++) {
-            System.out.println(face + "\t" + freq[face]);
+            System.out.println(String.format("%03d",face) + "\t\t" + freq[face]);
         }
     }
 }
