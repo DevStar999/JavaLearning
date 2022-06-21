@@ -3,7 +3,7 @@ package com.company.phase1;
 // A simple interface. 
 interface in1 {
     // The following field is public, static and final.
-    final int a = 10;
+    int a = 10;
 
     // The following method is public and abstract.
     void display();
