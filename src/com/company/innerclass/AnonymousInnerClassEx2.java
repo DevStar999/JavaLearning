@@ -12,7 +12,7 @@ public class AnonymousInnerClassEx2 {
 	    */
         Hello helloObject = new Hello() {
             public void show() {
-                System.out.println("i am in anonymous class");
+                System.out.println("I am in anonymous inner class");
             }
         };
 

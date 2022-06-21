@@ -8,7 +8,7 @@ class Utility {
 
 
 public class AnonymousInnerClassEx1 {
-    //  An Anonymous Inner Class with 'Test_Utility' as base class i.e. a subclass of specified type. 	
+    //  An Anonymous Inner Class with 'Utility' as base class i.e. a subclass of specified type.
     static Utility utilityObject = new Utility() {
         void show() {
             super.show();
