@@ -39,7 +39,7 @@ public class ListIteratorClass {
 
         // Checking the successful insertion of '-1' in the list as follows via printing the List.
         listIterator = list.listIterator();
-        System.out.println("The elements of the List 'list' are as follows (in reverse order) :");
+        System.out.println("The elements of the List 'list' are as follows :");
         while (listIterator.hasNext()) {
             System.out.print(listIterator.next() + " ");
         }

@@ -13,7 +13,7 @@ import java.util.Vector;
 public class IteratorTypes {
     public static void main(String[] args) {
 		/*  There are 3 types of Iterators :
-		 	(1) Enumeration (Only applicable to legacy collections i.e. Vectors and Hash-tables.)
+		 	(1) Enumeration (Only applicable to legacy collections i.e. Vectors, Stack and Hash-tables.)
 			(2) Iterator (The universal iterator applicable for any collection.)
 			(3) ListIterator (Only applicable for List collections.)
 		*/

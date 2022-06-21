@@ -44,7 +44,7 @@ public class CollectionsMethods1 {
 		/* 	The 'Collections.frequency(collection, object)' will give the frequency of the object
 			in the collection.
 		*/
-        System.out.println("The frequency of '44' in 'arrayList' = " + Collections.frequency(arrayList, 100));
+        System.out.println("The frequency of '100' in 'arrayList' = " + Collections.frequency(arrayList, 100));
 		
 		/* 	The 'Collections.disjoint(collection1, collection2)' will return 'true' if these two collections
 			have nothing in common else it will return 'false'.
