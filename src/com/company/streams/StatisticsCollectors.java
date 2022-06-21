@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 
 public class StatisticsCollectors {
     public static void main(String[] args) {
-        IntStream isObject = IntStream.range(1, 11);
+        IntStream isObject = IntStream.range(1, 11); // 1 -> inclusive, 11 -> exclusive
         List<Integer> list = Arrays.asList(1, 6, 2, 7, 3, 8, 5, 4);
 
         IntSummaryStatistics iss1 = isObject.summaryStatistics();
