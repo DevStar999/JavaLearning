@@ -19,13 +19,9 @@ public class CollectionsCommonMethods2 {
         /** Common Collecion's Methods are follows (Part 2) **/
         /* (1) contains(Object ob) - Returns true if this list contains the specified element. */
         list1.contains(7);
-		
-		/* (2.a) remove(Object ob) - Removes the 1st occurrence of the specified element from this list, 
-				 if it is present. 
-		*/
-        list2.remove(14); // Removing by value.
-		/* (2.b) remove(int index) - Removes the element at the specified position in this list. 
-		 		 Shifts any subsequent elements to the left (subtracts one from their indices).
+
+		/* (2) remove(int index) - Removes the element at the specified position in this list.
+		 	   Shifts any subsequent elements to the left (subtracts one from their indices).
 		*/
         list1.remove(5); // Removing by index.
 
