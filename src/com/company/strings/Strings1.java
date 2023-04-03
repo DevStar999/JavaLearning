@@ -41,5 +41,11 @@ public class Strings1 {
         // Converting a string to char array
         char[] charArray = str1.toCharArray();
         System.out.println("charArray = " + Arrays.toString(charArray));
+
+        // String.format() common use cases
+        double dbValue = 3.794617916; // Instead of 'double', 'float' can also work
+        int intValue = 4; // Instead of 'int', 'long' can also work fine
+        System.out.println(String.format("%04d", intValue));
+        System.out.println(String.format("%.3f", dbValue));
     }
 }
