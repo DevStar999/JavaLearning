@@ -2,6 +2,9 @@ package com.company.strings;
 
 public class Strings1 {
     public static void main(String[] args) {
+        // Always ensure to initialise a string
+        String strInit = "";
+
         // Declaring few sample String variables to work with as follows
         String str1 = "Some value.";
 
