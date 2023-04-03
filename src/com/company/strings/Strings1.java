@@ -1,5 +1,7 @@
 package com.company.strings;
 
+import java.util.Arrays;
+
 public class Strings1 {
     public static void main(String[] args) {
         // Always ensure to initialise a string
@@ -35,5 +37,9 @@ public class Strings1 {
         String forward = "123456789";
         String rev = ((new StringBuilder(forward)).reverse()).toString();
         System.out.println("rev = " + rev);
+
+        // Converting a string to char array
+        char[] charArray = str1.toCharArray();
+        System.out.println("charArray = " + Arrays.toString(charArray));
     }
 }
