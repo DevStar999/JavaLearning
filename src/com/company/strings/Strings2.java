@@ -1,6 +1,19 @@
 package com.company.strings;
 
 public class Strings2 {
+    public static boolean checkAlphaNumericForCharacter(char ch) {
+        return ((ch >= '0' && ch <= '9') || (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z'));
+    }
+
+    public static boolean checkAlphaNumericForWholeString(String str) {
+        for (int i=0; i<str.length(); i++) {
+            if (!checkAlphaNumericForCharacter(str.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
         String words[] = {"dunk", "trunk", "durable", "steam"};
 
@@ -35,5 +48,13 @@ public class Strings2 {
         String cap = "vInaY";
         cap = (cap.toUpperCase()).substring(0, 1) + (cap.toLowerCase()).substring(1);
         System.out.println("cap = " + cap);
+
+        // Checking if string is completely AlphaNumeric or not
+        String sampleString = "A man, a plan, a canal: Panama";
+        if (checkAlphaNumericForWholeString(sampleString)) {
+            System.out.println("Given string is completely alphaNumeric");
+        } else {
+            System.out.println("Given string is not completely alphaNumeric");
+        }
     }
 }
