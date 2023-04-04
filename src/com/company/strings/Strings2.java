@@ -56,5 +56,10 @@ public class Strings2 {
         } else {
             System.out.println("Given string is not completely alphaNumeric");
         }
+
+        // Convert a char array back to a String
+        char[] chArray = {'c', 'h', 'a', 'r', 'A', 'r', 'r', 'a', 'y'};
+        String chString = String.valueOf(chArray);
+        System.out.println("chString = " + chString);
     }
 }
