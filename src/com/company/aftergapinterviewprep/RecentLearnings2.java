@@ -15,5 +15,8 @@ public class RecentLearnings2 {
         int minValue = 5, maxValue = 10;
         // For the following, Range -> [minValue, maxValue) i.e. minValue is inclusive and maxValue is exclusive
         int randomIntInRange = random.nextInt(maxValue - minValue) + minValue;
+
+        /* Wrapper Classes like 'Integer', 'Character', 'Boolean' etc. */
+        // Visit the class 'WrapperClasses.java' in the package 'datatypes' in this project
     }
 }
