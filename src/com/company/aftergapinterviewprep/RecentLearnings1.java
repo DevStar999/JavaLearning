@@ -50,6 +50,7 @@ public class RecentLearnings1 {
         /* Array Basics */
         int n1 = 7, i = 5;
         int[] arr = new int[n1]; // n = size of the array
+        Arrays.fill(arr, 0); // Initialising an array with Array.fill() method
         Integer[] arr1 = {1, 4, 2, 9}; // Initialise with elements
 
         Arrays.toString(arr); // To show an array as a string
