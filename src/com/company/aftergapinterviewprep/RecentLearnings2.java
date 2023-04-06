@@ -1,6 +1,8 @@
 package com.company.aftergapinterviewprep;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Random;
 
 public class RecentLearnings2 {
@@ -18,5 +20,13 @@ public class RecentLearnings2 {
 
         /* Wrapper Classes like 'Integer', 'Character', 'Boolean' etc. */
         // Visit the class 'WrapperClasses.java' in the package 'datatypes' in this project
+
+        // 'Deque' interface (child interface of 'Queue') - Just offers some additional methods
+        Deque<Integer> q3 = new ArrayDeque();
+        q3.addFirst(53); // addFirst() method is used to add an element at the head
+        q3.addLast(89); // addLast() method is same as add() method which is used to add an element at the tail
+        int pollFirstElement = q3.pollFirst(); // pollFirst() method will remove element at head, same as poll() method
+        int pollLastElement = q3.pollLast(); // pollLast() method will remove element at tail
+        // This is just an extra interface which we can use if required
     }
 }

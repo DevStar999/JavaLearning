@@ -1,18 +1,15 @@
 package com.company.aftergapinterviewprep;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.Stack;
-import java.util.TreeMap;
-import java.util.TreeSet;
 
 public class RecentLearnings3 {
 
@@ -43,33 +40,23 @@ public class RecentLearnings3 {
         Integer topElement = st.peek(); // (4) peek() method to access the top element of the stack
         int size = st.size(); // (5) size() method to get the size of the stack
 
-        // 'Set' interface (so basically 'HashSet' or 'TreeSet') - Most frequently used methods
-        Set<Integer> s1 = new HashSet(); Set<Integer> s2 = new TreeSet(); // (1.a) Init a 'Set' class object
-        // (1.b) Init a TreeSet of descending order i.e. here the higher value elements come first
-        Set<Integer> descendingOrderSet = new TreeSet<>(new Comparator<Integer>() {
-            public int compare(Integer i1, Integer i2) {
-                return (-1) * (i1.compareTo(i2));
-            }
-        });
-        int sizeOfSet = s1.size(); // (2) size() method to get the size
-        boolean verdictOfContains = s1.contains(4); // (3) Use contains() method to check if an element is present or not
-        s1.add(87); s1.add(54); // (4) Use the add() method to add elements into the set
-        s1.remove(Integer.valueOf(54)); // (5) Using remove() method to remove 54 by value (Boxing here to ensure we are
-        // removing by the given object of the set)
+        // 'Queue' interface (so basically 'ArrayDeque') - Most frequently used methods
+        Queue<Integer> q1 = new ArrayDeque(); Queue<Integer> q2 = new ArrayDeque(); // (1) Init a 'Queue' class object
+        q1.size(); // (2) size() method to get the size
+        boolean verdictQueue = q1.contains(25); // (3) Use contains() method to check if an element is present or not
+        q1.add(56); q1.add(23); q1.add(38); // (4) add() method to insert elements in the queue
+        q1.remove(56); // (5) remove() method to insert elements in the queue
+        int headOfQueue1 = q1.peek(); // (6) peek() method will show the head of the queue without removing it
+        int headOfQueue2 = q1.poll(); // (7) poll() method will remove the head from the queue and return it's value
+        // Here, add() and poll() method are more frequently used
 
-        // 'Map' interface (so basically 'HashMap' & 'TreeMap') - Most frequently used methods
-        Map<Integer, Integer> map1 = new HashMap(); Map<Integer, Integer> map2 = new TreeMap(); // (1.a) Init a 'Map' class object
-        // (1.b) Init a TreeMap of descending order i.e. here the elements with higher value keys, come first
-        Map<String, Integer> descendingOrderMap = new TreeMap(new Comparator<String>() {
-            public int compare(String i1, String i2) {
-                return (-1) * (i1.compareTo(i2));
-            }
-        }); // The Comparator is for the strictly for keys only and thus the type declared in the Comparator is 'String'
-        map2.put(5, 10); // (2) For updating the value of an entry in a map, we have to use the put() method
-        boolean verdictContainsKey = map2.containsKey(5); // (3) containsKey() will return true is key exists
-        boolean verdictContainsValue = map2.containsValue(10); // (4) containsValue() will return true is at-least one key maps to the given value
-        int sizeOfMap = map1.size(); // (5) size() method to get the size of the map
-        Integer valueOfKey = map2.get(5); // (6) get() method to get the value for the given key
-        map2.remove(5); // (7) remove() method to remove an entry from the map using the given key
+        // 'PriorityQueue' implementation class of 'Queue' interface [For Min heap (default) & Max heap]
+        Queue<Integer> pqMin = new PriorityQueue(); // (1) We get the Min heap by default
+        Queue<Integer> pqMax = new PriorityQueue(new Comparator<Integer>() {
+           public int compare(Integer i1, Integer i2) {
+               return (-1) * i1.compareTo(i2);
+           }
+        }); // (2) For a Max heap we can pass in a Custom Comparator in the constructor as above
+        // All the other frequently used methods have been covered in the above 'Queue' interface
     }
 }
