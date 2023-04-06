@@ -8,13 +8,6 @@ public class Rough17 {
         //System.setIn(new FileInputStream("/Users/development/Devwork/Java/IdeaProjects/JavaLearning/src/com/" +
         //        "company/aftergapinterviewprep/input.txt"));
 
-        byte b;
-        short sh;
-        int it;
-        long lg;
-        float fl;
-        double db;
-        char ch;
-        boolean bn;
+
     }
 }
