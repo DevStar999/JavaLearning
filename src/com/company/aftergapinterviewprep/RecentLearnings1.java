@@ -3,9 +3,11 @@ package com.company.aftergapinterviewprep;
 import javafx.util.Pair;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 // Custom comparator example for practise
 class CustomComparator implements Comparator<Pair<Integer, Integer>> {
@@ -60,6 +62,14 @@ public class RecentLearnings1 {
         Arrays.sort(arr); // Sorting an array in ascending order
         // Sorting an array in descending order (Note that elements are of type 'Integer' and not the primitive 'int')
         Arrays.sort(arr1, Collections.reverseOrder());
+        // We can also write the code for comparator with anonymous inner class as follows (This is more preferred as it
+        // is less code, thus more speed)
+        Arrays.sort(arr1, new Comparator<Integer>() {
+            public int compare(Integer i1, Integer i2) {
+               return (-1) * i1.compareTo(i2); // Sorting in descending order
+            }
+        });
+        System.out.println(Arrays.toString(arr1));
 
         /* String Basics */
         // Refer the classes 'Strings1.java' and 'Strings2.java' in 'strings' package of this project
