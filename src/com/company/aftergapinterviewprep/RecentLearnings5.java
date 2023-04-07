@@ -3,6 +3,7 @@ package com.company.aftergapinterviewprep;
 import java.io.FileNotFoundException;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -16,7 +17,7 @@ import java.util.TreeSet;
 public class RecentLearnings5 {
 
     public static void main(String[] args) throws FileNotFoundException {
-        /* Most commonly used iteration and traversal techniques are as follows */
+        /* (I) Most commonly used iteration and traversal techniques are as follows */
         // For Arrays
         int[] arr = new int[10];
         for (int i=0; i<10; i++) {
@@ -84,5 +85,13 @@ public class RecentLearnings5 {
         for (Map.Entry<String, Integer> element: map.entrySet()) {
             System.out.println(element.getKey() + " -> " + element.getValue());
         }
+
+        // (II) 'Collections' class - Most commonly used methods
+        List<Integer> col = new ArrayList();
+        col.add(1); col.add(2); col.add(3); col.add(4); col.add(5);
+        Collections.reverse(col); // (1) reverse() method to reverse the order of the elements in the collection
+        Collections.shuffle(col); // (2) randomly permute elements in the collection with shuffle() method
+        Collections.sort(col); // (3) sort() method is used to sort (in ascending order) the elements in the collection
+        Collections.sort(col, Collections.reverseOrder()); // (4) reverseOrder() allows us to sort the elements in descending order
     }
 }
