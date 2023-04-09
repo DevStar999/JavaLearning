@@ -1,6 +1,7 @@
 package com.company.aftergapinterviewprep;
 
 import java.io.FileNotFoundException;
+import java.util.Arrays;
 
 public class RecentLearnings15 {
     /* Binary Search  */
@@ -89,6 +90,53 @@ public class RecentLearnings15 {
         return ans;
     }
 
+    // The following is the code to find the index of the given 'target' value in Rotated Sorted Array or return '-1'
+    // [Note - The O(log(n)) solution for this question only works if the elements are all unique]
+    public static int binarySearchInRotatedSortedArray(int[] nums, int target) {
+        int n = nums.length;
+        int pivot = pivotIndex(nums);
+        int leftAns = -1, rightAns = -1;
+        if (pivot == 0) {
+            rightAns = Arrays.binarySearch(nums, 0, (n-1) + 1, target);
+        } else {
+            leftAns = Arrays.binarySearch(nums, 0, (pivot-1) + 1, target);
+            rightAns = Arrays.binarySearch(nums, pivot, (n-1) + 1, target);
+        }
+        // In the above calls to Arrays.binarySearch() we have deliberately written the end index parameter with the
+        // index + 1, since the end index is exclusive w.r.t. the range
+
+        if (leftAns < 0 && rightAns < 0) {
+            return -1;
+        }
+        return Math.max(leftAns, rightAns);
+    }
+
+    // The following code is for finding the Insert Position Index for given 'target' value in the given sorted array
+    // This can be done in O(log(n)) time
+    public static int searchInsertPosition(int[] nums, int target) {
+        int n = nums.length;
+        int saveMid = -1, result = -1;
+        int start = 0, end = n-1;
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+            saveMid = mid;
+            if (nums[mid] == target) {
+                result = mid;
+                break;
+            } else if (nums[mid] > target) {
+                end = mid-1;
+            } else {
+                start = mid+1;
+            }
+        }
+
+        if (result == -1) {
+            if (nums[saveMid] > target) result = saveMid;
+            else result = saveMid + 1;
+        }
+        return result;
+    }
+
     public static void main(String[] args) throws FileNotFoundException {
         // (1) Simple Binary Search
         int[] arr1 = {2, 4, 5, 7, 15, 16, 21, 29};
@@ -113,7 +161,7 @@ public class RecentLearnings15 {
                     + countOfOccurrences);
         }
 
-        // (3) Find the pivot index in the array
+        // (3) Find the Pivot Index in the array
         int[] arr3 = {4, 5, 6, 7, 0, 1, 2};
         int pivot = pivotIndex(arr3);
         if (pivot == 0) {
@@ -121,5 +169,21 @@ public class RecentLearnings15 {
         } else {
             System.out.println("The pivot index = " + pivot + " i.e. the array was rotated " + pivot + " times");
         }
+
+        // (4) Find the 'target' value in a Rotated Sorted Array
+        int[] arr4 = {4, 5, 6, 7, 0, 1, 2};
+        int targetValue4 = 5;
+        int targetValue4Index = binarySearchInRotatedSortedArray(arr4, targetValue4);
+        if (targetValue4Index == -1) {
+            System.out.println("The target value = " + targetValue4 + ", is not present in the arr4");
+        } else {
+            System.out.println("The target value = " + targetValue4 + ", is present at index = " + targetValue4Index);
+        }
+
+        // (5) Find the Insert Position Index for the given 'target' value in a given sorted array
+        int[] arr5 = {1, 3, 5, 6};
+        int targetValue5 = 7;
+        int targetValue5Index = searchInsertPosition(arr5, targetValue5);
+        System.out.println("The insert position index for target = " + targetValue5 + ", is index = " + targetValue5Index);
     }
 }
