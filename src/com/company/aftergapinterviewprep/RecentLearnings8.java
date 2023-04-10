@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.util.Arrays;
 
 public class RecentLearnings8 {
-    /* Binary Search  */
+    /* Binary Search */
     // YouTube Playlist Link -> https://www.youtube.com/playlist?list=PL2_aWCzGMAwL3ldWlrii6YeLszojgH77j
     // The above playlist is a good resource to get started with binary search and do some commonly asked question of
     // binary search
