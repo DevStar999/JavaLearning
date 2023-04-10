@@ -14,7 +14,7 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 
 @SuppressWarnings("DuplicatedCode")
-public class RecentLearnings11 {
+public class RecentLearnings7 {
 
     public static void main(String[] args) throws FileNotFoundException {
         /* All iteration and traversal techniques are as follows */
