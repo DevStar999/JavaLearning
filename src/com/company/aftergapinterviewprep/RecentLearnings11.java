@@ -61,6 +61,51 @@ public class RecentLearnings11 {
         }
     }
 
+    // (4) Counting Sort -> Time = O(n), Space = O(max(arr[i])) or O(n), whichever is greater
+    // Resource -> https://www.youtube.com/watch?v=imqr13aIBAY
+    // A few points to remember about this algorithm are as follows ->
+    // (a) It is assumed that the range of elements is very small
+    // (b) It is a stable sorting algorithm i.e. the relative order of equal value elements is preserved in the sorted array
+    // (c) This algorithm is not comparison-based, it uses hashing. Thus, it not an In-Place algorithm
+    public static void countingSort(int[] arr) {
+        int n = arr.length;
+        // Step 1 - Finding the minimum and maximum values
+        int minValue = Integer.MAX_VALUE, maxValue = Integer.MIN_VALUE;
+        for (int i=0; i<n; i++) {
+            minValue = Math.min(arr[i], minValue);
+            maxValue = Math.max(arr[i], maxValue);
+        }
+
+        // Step 2 - Creating array of size range to store the count of numbers
+        int range = maxValue - minValue + 1;
+        int[] count = new int[range];
+        Arrays.fill(count, 0);
+
+        // Step 3 - Counting the numbers
+        int indexDiff = minValue;
+        for (int i=0; i<n; i++) {
+            count[arr[i] - indexDiff]++;
+        }
+
+        // Step 4 - Getting their positions
+        for (int i=1; i<range; i++) {
+            count[i] = count[i] + count[i-1];
+        }
+
+        // Step 5 - Creating a temporary output sorted array
+        int[] output = new int[n];
+        for (int i=0; i<n; i++) {
+            count[arr[i] - indexDiff]--; // Subtracting 1 to get the index at which the value is to be placed
+            int outputIndex = count[arr[i] - indexDiff];
+            output[outputIndex] = arr[i];
+        }
+
+        // Final Step - Copy the sorted 'output' array to the original array 'arr'
+        for (int i=0; i<n; i++) {
+            arr[i] = output[i];
+        }
+    }
+
     public static void main(String[] args) throws FileNotFoundException {
         // (1) For Selection Sort
         int arr1[] = {15, 29, 16, 21, 7, 2, 5, 4};
@@ -76,5 +121,10 @@ public class RecentLearnings11 {
         int arr3[] = {15, 29, 16, 21, 7, 2, 5, 4};
         insertionSort(arr3);
         System.out.println("After Insertion Sort = " + Arrays.toString(arr3));
+
+        // (4) For Counting Sort
+        int arr4[] = {1, 3, 3, 1, 0, 2, 5, 5, 2, 3, 2, 4};
+        countingSort(arr4);
+        System.out.println("After Counting Sort = " + Arrays.toString(arr4));
     }
 }
