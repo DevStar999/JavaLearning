@@ -3,13 +3,17 @@ package com.company.aftergapinterviewprep;
 import java.io.FileNotFoundException;
 
 public class RecentLearnings10 {
-    /* Bit Manipulation - Part 1 */
+    /* Bit Manipulation */
     // Resources -> (i) https://www.youtube.com/watch?v=Db8OmMfzwl8 (This is part 1 of 3, watch all 3 for all basics)
     // (ii) About 2 pages of handwritten notes in new book
+
+    // Question for Practise -> https://www.interviewbit.com/coding-interview-questions/#topics[]=bit-manipulation
+    // Account used was -> codegeek1998@gmail.com
 
     // Notes -> (1) For signed integers, 1st bit is signed bit and
     // if it is 0 -> Positive Number
     // if it is 1 -> Negative Number
+    // (2) Any ith array (array of size 'n') element appears (i+1) * (n-i) times in total in all the sub-arrays of an array
 
     public static long reverse(long num) {
         String str = Long.toBinaryString(num);
