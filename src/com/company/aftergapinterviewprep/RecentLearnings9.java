@@ -21,6 +21,8 @@ public class RecentLearnings9 {
             (c) If the 'key' element is not present in the array, method returns (-(insertion point) - 1)
             [key = element to be searched]
             (d) It guarantees that the return value will be >= 0 if and only if the key is found
+            (e) The insertion point is similar to the ceiling of 'target' in a sorted array which is the index of the
+            element that is just greater than the 'target' or equal to it
     */
 
     public static void main(String[] args) throws FileNotFoundException {
