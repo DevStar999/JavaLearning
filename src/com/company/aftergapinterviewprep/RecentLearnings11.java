@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.util.Arrays;
 
 public class RecentLearnings11 {
-    /* Sorting Algorithms */
+    /* Sorting Algorithms - Part 1 */
     // Resource -> youtube.com/playlist?list=PL2_aWCzGMAwKedT2KfDMB9YA5DgASZb3U
 
     // (1) Selection Sort -> Time = O(n^2), Space = O(1)
