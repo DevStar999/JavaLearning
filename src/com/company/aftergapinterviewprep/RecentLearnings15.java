@@ -2,9 +2,10 @@ package com.company.aftergapinterviewprep;
 
 import java.io.FileNotFoundException;
 import java.util.Arrays;
+import java.util.Random;
 
 public class RecentLearnings15 {
-    /* Sorting Algorithms - Part 1 */
+    /* Sorting Algorithms - Part 2 */
 
     // (1) Merge Sort -> Time = O(n * log(n)), Space = O(n)
     // Resources -> https://www.geeksforgeeks.org/merge-sort/
@@ -53,10 +54,59 @@ public class RecentLearnings15 {
         merge(left, right, arr);
     }
 
+    // (2) Quick Sort -> Time = O(n * log(n)) [Average Case]; Time = O(n ^ 2) [Worst Case], Space = O(1)
+    // A few things to remember about Quick Sort are as follows -
+    // (a) It is based on the Divide and Conquer Strategy
+    // (b) It is recursive in nature
+    // (c) It is NOT a stable sorting algorithm
+    // (d) The randomized version of this algorithm almost always guarantees that the Time will be O(n * log(n))
+    public static int partition(int[] arr, int start, int end) {
+        int pivot = arr[end];
+        int pivotIndex = start;
+        for (int i=start; i<end; i++) {
+            if (arr[i] <= pivot) {
+                // Swap(arr[i], arr[pivotIndex])
+                int temp = arr[i];
+                arr[i] = arr[pivotIndex];
+                arr[pivotIndex] = temp;
+                pivotIndex++;
+            }
+        }
+        // Swap(arr[end], arr[pivotIndex])
+        int temp = arr[end];
+        arr[end] = arr[pivotIndex];
+        arr[pivotIndex] = temp;
+
+        return pivotIndex;
+    }
+
+    public static int randomizedPartition(int[] arr, int start, int end) {
+        Random random = new Random();
+        int pivotIndex = random.nextInt(end - start + 1) + start;
+        // Swap(arr[pivotIndex], arr[end])
+        int temp = arr[pivotIndex];
+        arr[pivotIndex] = arr[end];
+        arr[end] = temp;
+        return partition(arr, start, end);
+    }
+
+    public static void quickSort(int[] arr, int start, int end) {
+        if (start < end) {
+            int pivotIndex = randomizedPartition(arr, start, end);
+            quickSort(arr, start, pivotIndex-1);
+            quickSort(arr, pivotIndex+1, end);
+        }
+    }
+
     public static void main(String[] args) throws FileNotFoundException {
         // (1) For mergeSort Sort
         int arr1[] = {15, 29, 16, 21, 7, 2, 5, 4};
         mergeSort(arr1);
         System.out.println("After Merge Sort = " + Arrays.toString(arr1));
+
+        // (2) For quickSort Sort
+        int arr2[] = {15, 29, 16, 21, 7, 2, 5, 4};
+        quickSort(arr2, 0, arr2.length-1);
+        System.out.println("After Quick Sort = " + Arrays.toString(arr2));
     }
 }
