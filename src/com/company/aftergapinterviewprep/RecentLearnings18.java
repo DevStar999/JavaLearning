@@ -139,6 +139,60 @@ public class RecentLearnings18 {
         return ans[sum];
     }
 
+    // (5.a) Binomial Coefficient - Given the value of 'n' and 'r', find the value of nCr or C(n, r)
+    // Here, we will use the 2 formulas -
+    // (a) C(n, n) = C(n, 0) = 1 // Base Case
+    // (b) C(n, r) = C(n-1, r) + C(n-1, r-1)
+    // Time = O(n * r), Space = O(n * r)
+    public static int nCr(int n, int r) {
+        if (n < r) return 0; // If there is error in input
+
+        int mod = 1000000000 + 7;
+        int[][] ans = new int[n+1][r+1];
+        ans[0][0] = 1; // Base case
+        for (int i=1; i<=n; i++) {
+            for (int j=0; j<=Math.min(i, r); j++) {
+                if (j == 0 || j == i) { // Base case
+                    ans[i][j] = 1;
+                } else {
+                    ans[i][j] = ans[i-1][j] + ans[i-1][j-1];
+                    ans[i][j] = (ans[i][j]) % mod;
+                }
+            }
+        }
+
+        return ans[n][r];
+    }
+
+    // (5.b) Binomial Coefficient (Space Efficient) - Given the value of 'n' and 'r', find the value of nCr or C(n, r)
+    // Here, we will use the 2 formulas -
+    // (a) C(n, n) = C(n, 0) = 1 // Base Case
+    // (b) C(n, r) = C(n-1, r) + C(n-1, r-1)
+    // Time = O(n * r), Space = O(n * r)
+    public static int nCrSpaceEfficient(int n, int r) {
+        if (n < r) return 0; // If there is error in input
+
+        int mod = 1000000000 + 7;
+        int[][] ans = new int[2][r+1];
+        ans[0][1] = 1; // Base case
+        for (int i=1; i<=n; i++) {
+            for (int j=0; j<=Math.min(i, r); j++) {
+                if (j == 0 || j == i) { // Base case
+                    ans[1][j] = 1;
+                } else {
+                    ans[1][j] = ans[0][j] + ans[0][j-1];
+                    ans[1][j] = (ans[1][j]) % mod;
+                }
+            }
+            // Copying values to the first row
+            for (int j=0; j<=Math.min(i, r); j++) {
+                ans[0][j] = ans[1][j];
+            }
+        }
+
+        return ans[0][r];
+    }
+
     public static void main(String[] args) throws FileNotFoundException {
         // (1) Example for Longest Increasing Subsequence (LIS)
         int[] arr1 = {10, 9, 2, 5, 3, 7, 101, 18};
@@ -166,5 +220,15 @@ public class RecentLearnings18 {
         int sum4b = 4;
         long ans4b = coinChangeTotalWays(coins4b, coins4b.length, sum4b);
         System.out.println("ans4b = " + ans4b);
+
+        // (5.a) Example for Binomial Coefficient
+        int n5a = 3, r5a = 2;
+        int ans5a = nCr(n5a, r5a);
+        System.out.println("ans5a = " + ans5a);
+
+        // (5.b) Example for Binomial Coefficient (Space Efficient)
+        int n5b = 3, r5b = 2;
+        int ans5b = nCr(n5b, r5b);
+        System.out.println("ans5b = " + ans5b);
     }
 }
