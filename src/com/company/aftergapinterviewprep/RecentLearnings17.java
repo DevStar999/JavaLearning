@@ -1,6 +1,8 @@
 package com.company.aftergapinterviewprep;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RecentLearnings17 {
     /* Dynamic Programming - Part 1, Standard DP Problems */
@@ -120,6 +122,65 @@ public class RecentLearnings17 {
         return ans[n][w];
     }
 
+    // (5.a) Subset Sum Problem - Given a set of values and a 'sum' value, determine if there is a subset of values
+    // from the given values which forms the given sum.
+    // Time = O(n * sum), Space = O(n * sum) [Where, n = number of items, sum = total sum value]
+    public static boolean subsetSum(int n, int[] arr, int sum) {
+        boolean[][] ans = new boolean[n+1][sum+1];
+        // Base case
+        for (int i=0; i<=n; i++) {
+            ans[i][0] = true;
+        }
+        for (int i=1; i<=n; i++) {
+            for (int j=1; j<=sum; j++) {
+                if (j >= arr[i-1]) {
+                    ans[i][j] = ans[i-1][j] | ans[i-1][j-arr[i-1]];
+                } else {
+                    ans[i][j] = ans[i-1][j];
+                }
+            }
+        }
+        return ans[n][sum];
+    }
+
+    // (5.b) Subset Sum Problem - Given a set of values and a 'sum' value, determine if there is a subset of values
+    // from the given values which forms the given sum and if there does exist at-least one subset, then report any one
+    // subset or return an empty array
+    // Time = O(n * sum), Space = O(n * sum) [Where, n = number of items, sum = total sum value]
+    public static List<Integer> subsetSumReportSubset(int n, int[] arr, int sum) {
+        boolean[][] ans = new boolean[n+1][sum+1];
+        // Base case
+        for (int i=0; i<=n; i++) {
+            ans[i][0] = true;
+        }
+        for (int i=1; i<=n; i++) {
+            for (int j=1; j<=sum; j++) {
+                if (j >= arr[i-1]) {
+                    ans[i][j] = ans[i-1][j] | ans[i-1][j-arr[i-1]];
+                } else {
+                    ans[i][j] = ans[i-1][j];
+                }
+            }
+        }
+
+        List<Integer> ansSet = new ArrayList<>();
+        int row = n, col = sum, curSum = sum;
+        if (ans[row][col]) {
+            while (curSum > 0 && row >= 0 && col >= 0) {
+                if (ans[row-1][col]) {
+                    row--;
+                } else {
+                    int val = arr[row-1];
+                    ansSet.add(val);
+                    col = col - val;
+                    row--;
+                    curSum -= val;
+                }
+            }
+        }
+        return ansSet;
+    }
+
     public static void main(String[] args) throws FileNotFoundException {
         // (1) Example for LCS
         String str11 = "catde", str12 = "cxat";
@@ -137,15 +198,27 @@ public class RecentLearnings17 {
         System.out.println("Edit Distance for (" + str31 + ", " + str32 + ") = " + ans3);
 
         // (4.a) Example for 0/1 Knapsack Problem
-        int w4 = 4, n4 = 3;
-        int[] wt4 = {4, 5, 1}, val4 = {1, 2, 3};
-        int ans4 = knapsack01(w4, wt4, val4, n4);
-        System.out.println("The maximum value for 0/1 Knapsack Problem = " + ans4);
+        int w4a = 4, n4a = 3;
+        int[] wt4a = {4, 5, 1}, val4a = {1, 2, 3};
+        int ans4a = knapsack01(w4a, wt4a, val4a, n4a);
+        System.out.println("The maximum value for 0/1 Knapsack Problem = " + ans4a);
 
         // (4.a) Example for 0/1 Knapsack Problem
-        int w5 = 4, n5 = 3;
-        int[] wt5 = {4, 5, 1}, val5 = {1, 2, 3};
-        int ans5 = knapsackWithDuplicates(w5, wt5, val5, n5);
-        System.out.println("The maximum value for Knapsack Problem with Duplicates = " + ans5);
+        int w4b = 4, n4b = 3;
+        int[] wt4b = {4, 5, 1}, val4b = {1, 2, 3};
+        int ans4b = knapsackWithDuplicates(w4b, wt4b, val4b, n4b);
+        System.out.println("The maximum value for Knapsack Problem with Duplicates = " + ans4b);
+
+        // (5.a) Example for Subset Sum Problem
+        int sum5a = 9, n5a = 6;
+        int[] arr5a = {3, 34, 4, 12, 5, 2};
+        boolean ans5a = subsetSum(n5a, arr5a, sum5a);
+        System.out.println("For the Subset Sum Problem, ans5a = " + ans5a);
+
+        // (5.b) Example for Subset Sum Problem (Report Subset)
+        int sum5b = 9, n5b = 6;
+        int[] arr5b = {3, 34, 4, 12, 5, 2};
+        List<Integer> ans5b = subsetSumReportSubset(n5b, arr5b, sum5b);
+        System.out.println("For the Subset Sum Problem, ans5b = " + ans5b);
     }
 }
