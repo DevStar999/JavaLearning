@@ -1,10 +1,9 @@
 package com.company.aftergapinterviewprep;
 
-import javafx.util.Pair;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Scanner;
 
 public class Rough9 {
 
@@ -15,7 +14,5 @@ public class Rough9 {
         String str = "";
         str.toLowerCase();
         // System.out.println(ans);
-
-        List<Pair<Integer, Integer>> l = new ArrayList();
     }
 }

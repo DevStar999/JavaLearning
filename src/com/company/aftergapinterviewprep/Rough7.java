@@ -2,6 +2,7 @@ package com.company.aftergapinterviewprep;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -10,17 +11,16 @@ import java.util.Queue;
 import java.util.Stack;
 
 public class Rough7 {
-    public static long pow(long base, long index) {
-        long ans = 1L;
-        for (int i=1; i<=index; i++) {
-            ans *= base;
-        }
-        return ans;
-    }
 
     public static void main(String[] args) throws FileNotFoundException {
-        int left = 2147483646;
-        int right = 2147483647;
-        int[] arr = {5,2,6,1};
+        int i1 = 5, i2 = 7;
+        int verdict = Integer.compare(i1, i2);
+        System.out.println("verdict = " + verdict);
+        int[] arr = {2, 5, 7};
+        int index = Arrays.binarySearch(arr, 6);
+        index++;
+        index = Math.abs(index);
+        System.out.println("index = " + index);
+
     }
 }
