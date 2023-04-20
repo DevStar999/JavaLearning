@@ -13,5 +13,8 @@ public class Rough5 {
 
         boolean ans = repeatedSubstringPattern("ababab");
         System.out.println("ans = " + ans);
+
+        int val = (int) 'a';
+        System.out.println("val = " + val);
     }
 }
