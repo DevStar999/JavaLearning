@@ -2,7 +2,11 @@ package com.company.aftergapinterviewprep;
 
 import java.io.FileNotFoundException;
 
-/* Implementation of 'Trie' Data Structure */
+/* Implementation of 'Trie' Data Structure (Generalised, less preferred) */
+// Check out the Trie code in the file RecentLearnings23.java file
+// Notes - (1) A Trie is also called as a 'Prefix Tree'
+// (2) It is an extremely useful data structure for solving String related problems and sometimes it also comes in handy
+// for bit related questions
 class TrieNode {
     // For simplicity or depending on the question we can change the value of MAX_SIZE to 26 for
     // English alphabet characters
