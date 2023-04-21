@@ -1,6 +1,5 @@
 package com.company.aftergapinterviewprep;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +7,7 @@ import java.util.Scanner;
 
 public class RecentLearnings24 {
     /* Graphs - Basics */
+    // Here, we have looked at the basics of an Undirected Graph
 
     public static void addEdge(List<List<Integer>> adj, int x, int y) {
         adj.get(x).add(y);
