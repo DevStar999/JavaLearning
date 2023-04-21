@@ -45,6 +45,39 @@ public class RecentLearnings26 {
         System.out.println(Arrays.toString(pred));
     }
 
+    public static boolean isCycle(int v, List<List<Integer>> adj) {
+        boolean[] visited = new boolean[v];
+        Queue<Integer> q = new ArrayDeque<>();
+        int[] parent = new int[v];
+        boolean ans = false;
+
+        for (int i=0; i<v; i++) {
+            if (!visited[i]) {
+                visited[i] = true;
+                parent[i] = -1;
+                q.add(i);
+                while (q.size() > 0) {
+                    int node = q.poll();
+                    for (Integer child : adj.get(node)) {
+                        if (!visited[child]) {
+                            visited[child] = true;
+                            parent[child] = node;
+                            q.add(child);
+                        } else {
+                            if (parent[node] != child) {
+                                ans = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (ans) break;
+            }
+        }
+
+        return ans;
+    }
+
     public static void addEdge(List<List<Integer>> adj, int x, int y) {
         adj.get(x).add(y);
         adj.get(y).add(x);
@@ -65,5 +98,11 @@ public class RecentLearnings26 {
         }
 
         bfs(v, adj);
+        boolean hasCycle = isCycle(v, adj);
+        if (hasCycle) {
+            System.out.println("The given graph has a cycle");
+        } else {
+            System.out.println("The given graph does NOT have a cycle");
+        }
     }
 }
