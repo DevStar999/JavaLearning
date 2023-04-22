@@ -25,6 +25,7 @@ public class RecentLearnings27 {
             }
             cur = cur.next;
         }
+        System.out.println();
     }
 
     public static void main(String[] args) throws FileNotFoundException {
