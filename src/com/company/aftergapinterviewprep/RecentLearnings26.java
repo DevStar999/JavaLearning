@@ -5,9 +5,12 @@ import java.io.FileNotFoundException;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Queue;
 import java.util.Scanner;
+import java.util.Set;
+import java.util.Stack;
 
 @SuppressWarnings("DuplicatedCode")
 public class RecentLearnings26 {
@@ -45,6 +48,7 @@ public class RecentLearnings26 {
         System.out.println(Arrays.toString(pred));
     }
 
+    // The following method is for detecting a cycle in an undirected graph using BFS
     public static boolean isCycle(int v, List<List<Integer>> adj) {
         boolean[] visited = new boolean[v];
         Queue<Integer> q = new ArrayDeque<>();
@@ -78,6 +82,51 @@ public class RecentLearnings26 {
         return ans;
     }
 
+    // The following method is for detecting a cycle in a directed graph using iterative DFS
+    public boolean isCyclicForDirectedGraph(int v, ArrayList<ArrayList<Integer>> adj) {
+        // The main difference is that, we need to keep track of the elements that are currently in the recursion stack
+        // for the current connected component of the graph (or the current pass). For this, we use a set called 'pass'
+        // to store these elements and remove them from this set as soon as all their neighbors are visited. Also, here
+        // is the place where we check if there is a cycle in the graph by checking if the current neighbor is in the
+        // set or not. If it is, then we have found a cycle
+        boolean ans = false;
+        boolean[] visited = new boolean[v];
+        Stack<Integer> st = new Stack<>(); // Stack for implementing DFS
+        Set<Integer> pass = new HashSet<>(); // Set to store the elements in the current pass
+        for (int i = 0; i < v; i++) {
+            if (!visited[i]) {
+                st.push(i);
+                visited[i] = true;
+                pass.add(i);
+                while (st.size() > 0) {
+                    int top = st.peek();
+                    int count = 0;
+                    for (Integer child : adj.get(top)) {
+                        if (!visited[child]) {
+                            st.push(child);
+                            visited[child] = true;
+                            pass.add(child);
+                            count++;
+                            break;
+                        } else { // This means that the 'child' vertex was visited
+                            if (pass.contains(child)) {
+                                ans = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (count == 0) {
+                        st.pop();
+                        pass.remove(top);
+                    }
+                }
+                if (ans) break;
+                pass.clear();
+            }
+        }
+        return ans;
+    }
+
     public static void addEdge(List<List<Integer>> adj, int x, int y) {
         adj.get(x).add(y);
         adj.get(y).add(x);
@@ -104,5 +153,7 @@ public class RecentLearnings26 {
         } else {
             System.out.println("The given graph does NOT have a cycle");
         }
+
+        // The code for detecting cycle in a directed graph has been verified on GFG practise area
     }
 }

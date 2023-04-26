@@ -1,14 +1,14 @@
 package com.company.rough;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Rough15 {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int num = 123;
-        StringBuilder sb = new StringBuilder("Any String");
-        sb.reverse();
-        sb.toString();
-        System.out.println(Integer.MIN_VALUE);
+
+    public static void main(String[] args) throws FileNotFoundException {
+        // System.setIn(new FileInputStream("/Users/development/Devwork/Java/IdeaProjects/" +
+        //        "JavaLearning/src/com/company/rough/input.txt"));
+
     }
 }
