@@ -83,7 +83,7 @@ public class RecentLearnings26 {
     }
 
     // The following method is for detecting a cycle in a directed graph using iterative DFS
-    public boolean isCyclicForDirectedGraph(int v, ArrayList<ArrayList<Integer>> adj) {
+    public boolean isCyclicForDirectedGraph(int v, List<List<Integer>> adj) {
         // The main difference is that, we need to keep track of the elements that are currently in the recursion stack
         // for the current connected component of the graph (or the current pass). For this, we use a set called 'pass'
         // to store these elements and remove them from this set as soon as all their neighbors are visited. Also, here
@@ -154,6 +154,7 @@ public class RecentLearnings26 {
             System.out.println("The given graph does NOT have a cycle");
         }
 
-        // The code for detecting cycle in a directed graph has been verified on GFG practise area
+        // The code for detecting cycle in a directed graph is running correctly on GFG practise area -
+        // https://practice.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1
     }
 }

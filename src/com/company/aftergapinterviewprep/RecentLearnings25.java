@@ -13,6 +13,7 @@ import java.util.Stack;
 public class RecentLearnings25 {
     /* Graphs - Traversal */
 
+    // BFS -> Time = O(V + E), Auxiliary Space = O(V) [For the Queue] [Here, V = no. of vertices, E = no. of edges]
     public static void bfs(int v, List<List<Integer>> adj) {
         boolean[] visited = new boolean[v];
         List<Integer> bfsNodeOrder = new ArrayList<>(); // Order in which the nodes have been traversed over in the BFS
@@ -39,6 +40,7 @@ public class RecentLearnings25 {
         System.out.println(bfsNodeOrder);
     }
 
+    // DFS -> Time = O(V + E), Auxiliary Space = O(V) [For the Stack] [Here, V = no. of vertices, E = no. of edges]
     public static void dfs(int v, List<List<Integer>> adj) {
         boolean[] visited = new boolean[v];
         List<Integer> dfsNodeOrder = new ArrayList<>(); // Order in which the nodes have been traversed over in the DFS
