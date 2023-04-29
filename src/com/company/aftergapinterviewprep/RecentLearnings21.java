@@ -2,7 +2,31 @@ package com.company.aftergapinterviewprep;
 
 import java.io.FileNotFoundException;
 import java.util.AbstractMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+
+class CustomObject {
+    int val1, val2;
+    String val3;
+    public CustomObject(int val1, int val2, String val3) {
+        this.val1 = val1;
+        this.val2 = val2;
+        this.val3 = val3;
+    }
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) return true;
+        if (!(other instanceof CustomObject)) return false;
+        CustomObject temp = (CustomObject) other;
+        return (this.val1 == temp.val1 && this.val2 == temp.val2 && this.val3.equals(temp.val3));
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(val1, val2, val3);
+    }
+}
 
 @SuppressWarnings("DuplicateExpressions")
 public class RecentLearnings21 {
@@ -35,5 +59,16 @@ public class RecentLearnings21 {
         int firstVal = pairAlternative.getKey();
         int secondVal = pairAlternative.getValue();
         pairAlternative.setValue(45); // We do NOT get a setKey() method
+
+        // (3) Example on how to override the 'equals' and 'hashcode' methods for the custom class so that it can be
+        // used correctly with 'Set' data structure
+        Set<CustomObject> set = new HashSet<>();
+        CustomObject customObject = new CustomObject(2, 3, "String Value");
+        set.add(customObject);
+        if (set.contains(customObject)) {
+            System.out.println("Set related code works now");
+        } else {
+            System.out.println("Set related code is NOT working now");
+        }
     }
 }
