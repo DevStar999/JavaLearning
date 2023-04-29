@@ -102,6 +102,7 @@ public class RecentLearnings28 {
     }
 
     // (3) Dijkstra's Algorithm for Shortest Paths from Single Source to all other vertices
+    // [Important Note -> -ve weight edges are NOT allowed i.e. the algorithm will NOT work correctly for -ve edges]
     // (i) Complexities for Algo - Using Heap or Binary Search Tree, Theory
     //     Time -> O(E * log(V)), Space -> O(V + E), Auxiliary Space -> O(V)
     // (ii) Complexities for Algo - Using Priority Queue, Actual Implementation
@@ -111,11 +112,13 @@ public class RecentLearnings28 {
     // Notes -> (i) This algo can handle non-negative weights only, it will produce incorrect results for negative
     //          weights
     //          (ii) It can handle graphs consisting of cycles but not negative weights
-    //          (iii) It is good for a shortest paths from a single source only
+    //          (iii) It is good for shortest paths from a single source only
+    //          (iv) The above points are true for both undirected and directed graphs
+    //          (v) It is a Greedy Algorithm
     static int[] dijkstra(int V, List<List<List<Integer>>> adj, int src) {
         boolean[] visited = new boolean[V];
         int[] dist = new int[V]; // Output array carrying shortest distances from the given source
-        int INF = 1000000;
+        int INF = 100000000;
         Arrays.fill(dist, INF);
         dist[src] = 0;
         Queue<Edge> pq = new PriorityQueue<> (new Comparator<Edge>() { // Min heap with min. wt as priority
@@ -147,6 +150,107 @@ public class RecentLearnings28 {
         return dist;
     }
 
+    // (4) Bellman Ford's Algorithm for Shortest Paths from Single Source to all other vertices
+    // Time -> O(V * E), Space -> O(V + E) [Space is for the given edges in the graph and storing the distance array]
+    // Notes -> (1) For Undirected Graphs -
+    //              (a) It CANNOT handle -ve weight edges for Undirected Graphs
+    //              (b) It CANNOT handle -ve weight cycles for Undirected Graphs
+    //          (2) For Directed Graphs -
+    //              (a) It CAN handle -ve weight edges for Directed Graphs
+    //              (b) It CANNOT handle -ve weight cycles for Undirected Graphs
+    //          (3) It can help us to report the existence of a negative weight cycle
+    //          (4) This algorithm is ideally meant for Directed Graphs. If we want this to work with Undirected Graphs,
+    //              we first have to convert it to a Directed Graph and then use it. Thus, having a -ve weight edge in an
+    //              undirected graph will lead to a negative cycle after converting it to directed graph. Thus, the
+    //              algorithm does not work for negative weight edges for an undirected graph
+    //          (5) It is based on a Dynamic Programming Approach
+    static void bellmanFord(int v, List<List<Integer>> edges, int source) {
+        boolean negCycle = false;
+        int[] dist = new int[v]; // Output array carrying shortest distances from the given source
+        int INF = 100000000;
+        Arrays.fill(dist, INF);
+        dist[source] = 0;
+
+        // Computing the shortest path as follows
+        for (int count=1; count<v; count++) { // Running the outer loop v-1 times, as the algorithm ensure to give answer
+            // if we run the loop v-1 times and update the shortest distances
+            for (int i=0; i<edges.size(); i++) {
+                int src = edges.get(i).get(0);
+                int dest = edges.get(i).get(1);
+                int wt = edges.get(i).get(2);
+                if (dist[src] + wt < dist[dest]) {
+                    dist[dest] = dist[src] + wt;
+                }
+            }
+        }
+
+        // Checking if the graph contains negative weight cycle
+        for (int i=0; i<edges.size(); i++) {
+            int src = edges.get(i).get(0);
+            int dest = edges.get(i).get(1);
+            int wt = edges.get(i).get(2);
+            if (dist[src] + wt < dist[dest]) {
+                negCycle = true;
+                break;
+            }
+        }
+
+        if (negCycle) {
+            System.out.println("The given graph contains negative weight cycle");
+        } else {
+            System.out.println("For the given graph, the shortest distances are as follows - ");
+            for (int i=0; i<dist.length; i++) {
+                System.out.println("source = " + source + ", vertex = " + i + ", dist = " + dist[i]);
+            }
+        }
+    }
+
+    // (5) Floyd Warshall's Algorithm for All-Pairs Shortest Paths
+    // Time -> O(V ^ 3), Space -> O(V ^ 2) [Space is for storing the distances of every vertex to every other vertex]
+    // Notes -> (1) (Same as Bellman Ford) For Undirected Graphs -
+    //              (a) It CANNOT handle -ve weight edges for Undirected Graphs
+    //              (b) It CANNOT handle -ve weight cycles for Undirected Graphs
+    //          (2)  (Same as Bellman Ford) For Directed Graphs -
+    //              (a) It CAN handle -ve weight edges for Directed Graphs
+    //              (b) It CANNOT handle -ve weight cycles for Undirected Graphs
+    //          (3) It does NOT help us to report the existence of a negative weight cycle. So, for this we can use
+    //              the Bellman Ford Algorithm to detect the existence of a negative weight cycle.
+    //          (4) (Same as Bellman Ford) This algorithm is ideally meant for Directed Graphs. If we want this to work
+    //              with Undirected Graphs, we first have to convert it to a Directed Graph and then use it. Thus,
+    //              having a -ve weight edge in an undirected graph will lead to a negative cycle after converting it to
+    //              directed graph. Thus, the algorithm does not work for negative weight edges for an undirected graph
+    //          (5) (Same as Bellman Ford) It is based on a Dynamic Programming Approach
+    public void FloydWarshall(int[][] edgeWeights) {
+        // A weighted directed graph is given of as a 2D matrix of size V * V, where V = no. of vertices in the graph
+        // and each element at (i, j) in the matrix denotes the weight from 'i' to 'j'
+        int v = edgeWeights.length; // The number of vertices in the graph
+        int INF = 100000000;
+        int[][] dist = new int[v][v]; // The output array having shortest distances from each vertex to every other vertex
+
+        for (int i=0; i<v; i++) {
+            for (int j=0; j<v; j++) {
+                if (edgeWeights[i][j] == -1) { // If edge weight is '-1' it means that there is no edge from 'i' to 'j'
+                    dist[i][j] = INF;
+                } else {
+                    dist[i][j] = edgeWeights[i][j];
+                }
+            }
+        }
+
+        for (int i=0; i<v; i++) dist[i][i] = 0; // Distance of vertex to itself is zero
+
+        // The main code of the algorithm is as follows
+        for (int k=0; k<v; k++) {
+            for (int i=0; i<v; i++) {
+                for (int j=0; j<v; j++) {
+                    if (dist[i][j] > dist[i][k] + dist[k][j]) {
+                        dist[i][j] = dist[i][k] + dist[k][j];
+                    }
+                }
+            }
+        }
+    }
+
     public static void main(String[] args) throws FileNotFoundException {
         // (1) The code for Topological Sorting using iterative DFS is running correctly on GFG practise area -
         // https://practice.geeksforgeeks.org/problems/topological-sort/1
@@ -156,5 +260,14 @@ public class RecentLearnings28 {
 
         // (3) The code for Dijkstra's Algorithm for Shortest Paths is running correctly on GFG practise area -
         // https://practice.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1
+
+        // (4) Example for Bellman Ford Algorithm
+        int source = 0, vertices = 2;
+        List<List<Integer>> edges = new ArrayList<>();
+        edges.add(new ArrayList<>(Arrays.asList(0, 1, 9))); // 0 -> Source Vertex, 1 -> Destination Vertex, 9 -> Edge Weight
+        bellmanFord(vertices, edges, source);
+
+        // (5) The code for Floyd Warshall Algorithm for All Pairs Shortest Paths is running correctly on GFG practise area -
+        // https://practice.geeksforgeeks.org/problems/implementing-floyd-warshall2042/1
     }
 }
