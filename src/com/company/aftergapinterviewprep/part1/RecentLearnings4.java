@@ -43,5 +43,7 @@ public class RecentLearnings4 {
         int sizeOfMap = map1.size(); // (5) size() method to get the size of the map
         Integer valueOfKey = map2.get(5); // (6) get() method to get the value for the given key
         map2.remove(5); // (7) remove() method to remove an entry from the map using the given key
+        map2.getOrDefault(5, 0); // (8) getOrDefault() method is used when we don't want to check if a
+        // key exist or not and wish to get a specific default value
     }
 }
