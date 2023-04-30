@@ -157,7 +157,7 @@ public class RecentLearnings28 {
     //              (b) It CANNOT handle -ve weight cycles for Undirected Graphs
     //          (2) For Directed Graphs -
     //              (a) It CAN handle -ve weight edges for Directed Graphs
-    //              (b) It CANNOT handle -ve weight cycles for Undirected Graphs
+    //              (b) It CANNOT handle -ve weight cycles for Directed Graphs
     //          (3) It can help us to report the existence of a negative weight cycle
     //          (4) This algorithm is ideally meant for Directed Graphs. If we want this to work with Undirected Graphs,
     //              we first have to convert it to a Directed Graph and then use it. Thus, having a -ve weight edge in an
