@@ -11,67 +11,46 @@ import java.util.TreeMap;
 
 public class Rough9 {
 
-    public static int largestRectangleArea(int[] arr) {
+    public static void countingSort(int[] arr) {
         int n = arr.length;
-        int[] left = new int[n], right = new int[n];
-        Arrays.fill(left, -1);
-        Arrays.fill(right, -1);
-        Stack<Integer> st = new Stack<Integer>();
-        st.add(n-1);
-        for (int i=n-2; i>=0; i--) {
-            while (st.size() > 0 && arr[i] <= arr[st.peek()]) {
-                st.pop();
-            }
-            if (st.size() == 0) {
-                right[i] = -1;
-            } else {
-                right[i] = st.peek();
-            }
-            st.add(i);
-        }
-        st.clear();
-        st.add(0);
-        for (int i=1; i<=n-1; i++) {
-            while (st.size() > 0 && arr[i] <= arr[st.peek()]) {
-                st.pop();
-            }
-            if (st.size() == 0) {
-                left[i] = -1;
-            } else {
-                left[i] = st.peek();
-            }
-            st.add(i);
-        }
-        // System.out.println(Arrays.toString(left));
-        // System.out.println(Arrays.toString(right));
-
-        int ans = 0;
+        int minVal = Integer.MAX_VALUE, maxVal = Integer.MIN_VALUE;
         for (int i=0; i<n; i++) {
-            int start, end;
-            if (left[i] == -1) {
-                start = 0;
-            } else {
-                start = left[i] + 1;
-            }
-            if (right[i] == -1) {
-                end = n-1;
-            } else {
-                end = right[i] - 1;
-            }
-            int width = end - start + 1, height = arr[i];
-            // System.out.println(width + " " + height);
-            int prod = width * height;
-            ans = Math.max(ans, prod);
+            minVal = Math.min(minVal, arr[i]);
+            maxVal = Math.max(maxVal, arr[i]);
         }
-        return ans;
+        int range = maxVal - minVal + 1;
+        int diff = minVal;
+        int[] cnt = new int[range];
+        for (int i=0; i<n; i++) {
+            cnt[arr[i] - diff]++;
+        }
+        for (int i=range-1; i>0; i--) {
+            cnt[i] = cnt[i-1];
+        }
+        cnt[0] = 0;
+        for (int i=1; i<range; i++) {
+            cnt[i] = cnt[i] + cnt[i-1];
+        }
+        int[] ans = new int[n];
+        for (int i=0; i<n; i++) {
+            int value = arr[i];
+            int index = cnt[arr[i] - diff];
+            cnt[arr[i] - diff]++;
+            ans[index] = value;
+        }
+        for (int i=0; i<n; i++) {
+            arr[i] = ans[i];
+        }
     }
 
     public static void main(String[] args) throws FileNotFoundException {
         // System.setIn(new FileInputStream(""));
-        int arr[] = {-2,1,-3,4,-1,2,1,-5,4};
+        int arr[] = {4, 3, 3, 1, 2, 2, 1, 3, 4, 1, 4};
         // int ans = maxSubArray(arr);
         String str = "";
         str.toLowerCase();
         // System.out.println(ans);
+        countingSort(arr);
+        System.out.println(Arrays.toString(arr));
     }
 }

@@ -87,17 +87,24 @@ public class RecentLearnings11 {
             count[arr[i] - indexDiff]++;
         }
 
-        // Step 4 - Getting their positions
+        // Step 4 - Shifting each value to the right by 1 position and keeping the first value as 0
+        for (int i=range-1; i>0; i--) {
+            count[i] = count[i-1];
+        }
+        count[0] = 0;
+
+        // Step 5 - Taking the pre-sum of the count array
         for (int i=1; i<range; i++) {
             count[i] = count[i] + count[i-1];
         }
 
-        // Step 5 - Creating a temporary output sorted array
+        // Step 6 - Creating a temporary output sorted array
         int[] output = new int[n];
         for (int i=0; i<n; i++) {
-            count[arr[i] - indexDiff]--; // Subtracting 1 to get the index at which the value is to be placed
+            int value = arr[i];
             int outputIndex = count[arr[i] - indexDiff];
-            output[outputIndex] = arr[i];
+            output[outputIndex] = value;
+            count[arr[i] - indexDiff]++; // Since, we have used this position to fill the value we move ahead
         }
 
         // Final Step - Copy the sorted 'output' array to the original array 'arr'
