@@ -45,5 +45,8 @@ public class RecentLearnings4 {
         map2.remove(5); // (7) remove() method to remove an entry from the map using the given key
         map2.getOrDefault(5, 0); // (8) getOrDefault() method is used when we don't want to check if a
         // key exist or not and wish to get a specific default value
+        TreeMap<Integer, Integer> map3 = new TreeMap<Integer, Integer>(); // If we directly create an object of the TreeMap then
+        int firstKeyValue = map3.firstKey(); // (9.a) firstKey() gives the first key of the sorted order (Min value by default)
+        int lastKeyValue = map3.lastKey(); // (9.b) lastKey() gives the last key (Max value by default)
     }
 }
