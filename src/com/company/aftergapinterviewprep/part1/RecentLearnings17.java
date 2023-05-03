@@ -203,7 +203,7 @@ public class RecentLearnings17 {
         int ans4a = knapsack01(w4a, wt4a, val4a, n4a);
         System.out.println("The maximum value for 0/1 Knapsack Problem = " + ans4a);
 
-        // (4.a) Example for 0/1 Knapsack Problem
+        // (4.b) Example for 0/1 Knapsack Problem (With Duplicates)
         int w4b = 4, n4b = 3;
         int[] wt4b = {4, 5, 1}, val4b = {1, 2, 3};
         int ans4b = knapsackWithDuplicates(w4b, wt4b, val4b, n4b);
