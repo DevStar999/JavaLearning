@@ -136,12 +136,15 @@ public class RecentLearnings29 {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
+        // (1) Example for Power Set iterative
         List<String> ans = printAllSubsetsOfGivenString("abc");
         System.out.println(ans + "\n");
 
+        // (2) Example for Power Set Recursive
         printAllSubsetsOfGivenStringRec("abc", 0, "", 3);
         System.out.println();
 
+        // (3) Example for N-Queens
         int n = 4;
         int[][] board = new int[n][n];
         /*
@@ -167,5 +170,17 @@ public class RecentLearnings29 {
         } else {
             System.out.println("NO solution was possible for the given parameters for the N-Queen problem");
         }
+
+        // (4) Rat in a Maze (Solved in GFG practise)
+        // https://practice.geeksforgeeks.org/problems/rat-in-a-maze-problem/1
+
+        // (5) Sudoku Solver (Solved in GFG practise)
+        // https://practice.geeksforgeeks.org/problems/solve-the-sudoku-1587115621/1
+
+        // (6) Permutations (Question on LeetCode)
+        // https://leetcode.com/problems/permutations/
+
+        // (7) Word Search (Question on LeetCode)
+        // https://leetcode.com/problems/word-search/
     }
 }
