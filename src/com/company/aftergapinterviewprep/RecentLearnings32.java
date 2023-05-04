@@ -89,6 +89,18 @@ public class RecentLearnings32 {
         return values.get(values.size()-1);
     }
 
+    // Diameter of a tree is defined as the number of nodes on the longest path from one leaf to another.
+    // (This may or may not pass through the root node)
+    public static int diameterOfATree(Node root) {
+        if (root == null) return 0;
+
+        int leftMaxDiameter = diameterOfATree(root.left);
+        int rightMaxDiameter = diameterOfATree(root.right);
+        int curMaxDiameter = 1 + heightOfTree(root.left) + heightOfTree(root.right);
+
+        return Math.max(curMaxDiameter, Math.max(leftMaxDiameter, rightMaxDiameter));
+    }
+
     public static void main(String[] args) throws FileNotFoundException {
         System.setIn(new FileInputStream("/Users/development/Devwork/Java/IdeaProjects/JavaLearning/src/com/" +
                 "company/aftergapinterviewprep/binary_tree_input1.txt"));
@@ -106,10 +118,21 @@ public class RecentLearnings32 {
         int treeSize = sizeOfTree(root); // Size i.e. the total number of nodes in the tree
         System.out.println("The size of the given tree = " + treeSize);
 
-        int minVal = minimumValueInTree(root);
-        System.out.println("The minimum value in the given tree = " + minVal);
+        Integer minVal = minValInTreeImproved(root);
+        if (minVal == null) {
+            System.out.println("The given tree is a NULL or EMPTY tree");
+        } else {
+            System.out.println("The minimum value in the given tree = " + minVal);
+        }
 
-        int maxVal = maximumValueInTree(root);
-        System.out.println("The maximum value in the given tree = " + maxVal);
+        Integer maxVal = maxValInTreeImproved(root);
+        if (maxVal == null) {
+            System.out.println("The given tree is a NULL or EMPTY tree");
+        } else {
+            System.out.println("The maximum value in the given tree = " + maxVal);
+        }
+
+        int treeDiameter = diameterOfATree(root);
+        System.out.println("The diameter of the given tree = " + treeDiameter);
     }
 }
