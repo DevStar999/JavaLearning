@@ -12,8 +12,9 @@ class Node {
     }
 }
 
+@SuppressWarnings("DuplicatedCode")
 public class RecentLearnings31 {
-    /* Binary Tree and Binary Search Tree - Basics */
+    /* Binary Tree and Binary Search Tree - Basics, Part 1 */
     // Resources -> https://www.youtube.com/watch?v=QhIM-G7FAow&list=PLUcsbZa0qzu0g_LceXxWu6ICc2o8SiAhJ&index=1
     // Notes -> (1) A tree with each node having at most 2 children is Binary Tree
     // (2) Maximum number of nodes at level 'i' = (2 ^ i) [The first level at which the root is placed is level 0]
