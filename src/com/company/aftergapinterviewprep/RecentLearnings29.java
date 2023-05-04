@@ -2,10 +2,14 @@ package com.company.aftergapinterviewprep;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+@SuppressWarnings("DuplicatedCode")
 public class RecentLearnings29 {
     /* Backtracking */
+    // Resources -> (1) https://www.youtube.com/watch?v=MHXR4PCY8c0&list=PLUcsbZa0qzu3yNzzAxgvSgRobdUUJvz7p&index=11
+    // (2) https://www.youtube.com/watch?v=Zq4upTEaQyM
 
     // (1) Basic method to return all subsets of a given string i.e. Power Set
     public static List<String> printAllSubsetsOfGivenString(String str) {
@@ -42,10 +46,126 @@ public class RecentLearnings29 {
         printAllSubsetsOfGivenStringRec(str, index+1, cur + str.charAt(index), n);
     }
 
+    // (3) N-Queens Problem
+    public static boolean inRange(int row, int rowStart, int rowEnd, int col, int colStart, int colEnd) {
+        return (row >= rowStart && row <= rowEnd && col >= colStart && col <= colEnd);
+    }
+
+    public static boolean isSafe(int[][] board, int row, int col, int n) {
+        // Vertical check
+        for (int i=0; i<n; i++) {
+            if (inRange(row - i, 0, n-1, col, 0, n-1)) { // Up
+                if (board[row-i][col] == 1) return false;
+            }
+            if (inRange(row + i, 0, n-1, col, 0, n-1)) { // Down
+                if (board[row+i][col] == 1) return false;
+            }
+        }
+        // Horizontal check
+        for (int i=0; i<n; i++) {
+            if (inRange(row, 0, n-1, col - i, 0, n-1)) { // Left
+                if (board[row][col-i] == 1) return false;
+            }
+            if (inRange(row, 0, n-1, col + i, 0, n-1)) { // Right
+                if (board[row][col+i] == 1) return false;
+            }
+        }
+        // Diagonal check
+        for (int i=0; i<n; i++) {
+            if (inRange(row - i, 0, n-1, col - i, 0, n-1)) { // Left - up
+                if (board[row-i][col-i] == 1) return false;
+            }
+            if (inRange(row + i, 0, n-1, col - i, 0, n-1)) { // Left - down
+                if (board[row+i][col-i] == 1) return false;
+            }
+            if (inRange(row - i, 0, n-1, col + i, 0, n-1)) { // Right - up
+                if (board[row-i][col+i] == 1) return false;
+            }
+            if (inRange(row + i, 0, n-1, col + i, 0, n-1)) { // Right - down
+                if (board[row+i][col+i] == 1) return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean nQueens(int[][] board, int row, int n) {
+        if (row == n) {
+            for (int i=0; i<n; i++) {
+                for (int j=0; j<n; j++) {
+                    System.out.print(board[i][j] + " ");
+                } System.out.println();
+            }
+            return true; // Returning true after finding just one solution
+        }
+
+        for (int i=0; i<n; i++) {
+            if (isSafe(board, row, i, n)) {
+                board[row][i] = 1;
+                if (nQueens(board, row + 1, n)) {
+                    return true;
+                }
+                board[row][i] = 0; // Backtracking happens here
+            }
+        }
+        return false;
+    }
+
+    public static boolean nQueensPrintAllSubsets(int[][] board, int row, int n, List<int[][]> allSolutionBoards) {
+        if (row == n) {
+            // Copying the answer board to a new board to avoid deep copy bug
+            int[][] newBoard = new int[n][n];
+            for (int i=0; i<n; i++) {
+                for (int j=0; j<n; j++) {
+                    newBoard[i][j] = board[i][j];
+                }
+            }
+            allSolutionBoards.add(newBoard);
+            return false; // Returning false after finding one solution, so as to find the other ones as well
+        }
+
+        for (int i=0; i<n; i++) {
+            if (isSafe(board, row, i, n)) {
+                board[row][i] = 1;
+                if (nQueensPrintAllSubsets(board, row + 1, n, allSolutionBoards)) {
+                    return true;
+                }
+                board[row][i] = 0; // Backtracking happens here
+            }
+        }
+        return false;
+    }
+
     public static void main(String[] args) throws FileNotFoundException {
         List<String> ans = printAllSubsetsOfGivenString("abc");
-        System.out.println(ans);
+        System.out.println(ans + "\n");
 
         printAllSubsetsOfGivenStringRec("abc", 0, "", 3);
+        System.out.println();
+
+        int n = 4;
+        int[][] board = new int[n][n];
+        /*
+        boolean verdict1 = nQueens(board, 0, n);
+        if (verdict1) {
+            System.out.println("One of the correct answers for the N-Queen problem was as above");
+        } else {
+            System.out.println("NO solution was possible for the given parameters for the N-Queen problem");
+        }
+        */
+        List<int[][]> allSolutionBoards = new ArrayList<>();
+        nQueensPrintAllSubsets(board, 0, n, allSolutionBoards);
+        boolean verdict2 = (allSolutionBoards.size() > 0);
+        if (verdict2) {
+            System.out.println("All solution boards for the given N-Queen problem are as follows - ");
+            for (int currentBoard = 0; currentBoard<allSolutionBoards.size(); currentBoard++) {
+                for (int i=0; i<n; i++) {
+                    for (int j=0; j<n; j++) {
+                        System.out.print(allSolutionBoards.get(currentBoard)[i][j] + " ");
+                    } System.out.println();
+                } System.out.println();
+            }
+        } else {
+            System.out.println("NO solution was possible for the given parameters for the N-Queen problem");
+        }
     }
 }
