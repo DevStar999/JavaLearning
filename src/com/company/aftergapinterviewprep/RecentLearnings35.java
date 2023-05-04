@@ -1,8 +1,8 @@
-package com.company.aftergapinterviewprep.part2;
+package com.company.aftergapinterviewprep;
 
 import java.io.FileNotFoundException;
 
-public class RecentLearnings30 {
+public class RecentLearnings35 {
 
     public static void main(String[] args) throws FileNotFoundException {
 
