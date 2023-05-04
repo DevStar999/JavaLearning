@@ -1,4 +1,4 @@
-package com.company.aftergapinterviewprep;
+package com.company.aftergapinterviewprep.part2;
 
 import java.io.FileNotFoundException;
 import java.util.AbstractMap;
