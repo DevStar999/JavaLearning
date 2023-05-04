@@ -2,6 +2,10 @@ package com.company.aftergapinterviewprep;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 @SuppressWarnings("DuplicatedCode")
@@ -53,10 +57,36 @@ public class RecentLearnings32 {
         return Math.min(root.data, Math.min(minimumValueInTree(root.left), minimumValueInTree(root.right)));
     }
 
+    // This method will work for edge cases like in the case of a null tree or when used as subroutine for other
+    // problems like for validating a BST etc.
+    public static Integer minValInTreeImproved(Node root) {
+        if (root == null) return null;
+        List<Integer> values = new ArrayList<>() {{add(root.data);}};
+        Integer leftMin = minValInTreeImproved(root.left);
+        Integer rightMin = minValInTreeImproved(root.right);
+        if (leftMin != null) values.add(leftMin);
+        if (rightMin != null) values.add(rightMin);
+        Collections.sort(values);
+        return values.get(0);
+    }
+
     public static int maximumValueInTree(Node root) {
         if (root == null) return Integer.MIN_VALUE;
 
         return Math.max(root.data, Math.max(maximumValueInTree(root.left), maximumValueInTree(root.right)));
+    }
+
+    // This method will work for edge cases like in the case of a null tree or when used as subroutine for other
+    // problems like for validating a BST etc.
+    public static Integer maxValInTreeImproved(Node root) {
+        if (root == null) return null;
+        List<Integer> values = new ArrayList<>() {{add(root.data);}};
+        Integer leftMax = maxValInTreeImproved(root.left);
+        Integer rightMax = maxValInTreeImproved(root.right);
+        if (leftMax != null) values.add(leftMax);
+        if (rightMax != null) values.add(rightMax);
+        Collections.sort(values);
+        return values.get(values.size()-1);
     }
 
     public static void main(String[] args) throws FileNotFoundException {
