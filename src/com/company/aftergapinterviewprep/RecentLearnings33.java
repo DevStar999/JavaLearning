@@ -2,6 +2,7 @@ package com.company.aftergapinterviewprep;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.AbstractMap;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -110,6 +111,59 @@ public class RecentLearnings33 {
         rightViewOfATree(root.right, currentLevel + 1, rightMostNodePerLevel);
     }
 
+    // The order of elements from left to right when looking at the tree from the Top
+    public static List<Integer> topViewOfATree(Node root) {
+        TreeMap<Integer, Node> topNodePerHorizontalDistance = new TreeMap<>();
+        if (root == null) return new ArrayList<>();
+        Queue<Map.Entry<Node, Integer>> q = new ArrayDeque<>();
+        q.add(new AbstractMap.SimpleEntry<Node, Integer>(root, 0));
+        while (q.size() > 0) {
+            Map.Entry<Node, Integer> top = q.poll();
+            Node node = top.getKey();
+            int hd = top.getValue();
+            if (!topNodePerHorizontalDistance.containsKey(hd)){
+                topNodePerHorizontalDistance.put(hd, node);
+            }
+            if (node.left != null) {
+                q.add(new AbstractMap.SimpleEntry<Node, Integer>(node.left, hd-1));
+            }
+            if (node.right != null) {
+                q.add(new AbstractMap.SimpleEntry<Node, Integer>(node.right, hd+1));
+            }
+        }
+        List<Integer> ans = new ArrayList<>();
+        for (Map.Entry<Integer, Node> element: topNodePerHorizontalDistance.entrySet()) {
+            ans.add(element.getValue().data);
+        }
+        return ans;
+    }
+
+    // The order of elements from left to right when looking at the tree from the Bottom
+    public static List<Integer> bottomViewOfATree(Node root) {
+        TreeMap<Integer, Node> bottomNodePerHorizontalDistance = new TreeMap<>();
+        if (root == null) return new ArrayList<>();
+        Queue<Map.Entry<Node, Integer>> q = new ArrayDeque<>();
+        q.add(new AbstractMap.SimpleEntry<Node, Integer>(root, 0));
+        while (q.size() > 0) {
+            Map.Entry<Node, Integer> top = q.poll();
+            Node node = top.getKey();
+            int hd = top.getValue();
+
+            bottomNodePerHorizontalDistance.put(hd, node);
+            if (node.left != null) {
+                q.add(new AbstractMap.SimpleEntry<Node, Integer>(node.left, hd-1));
+            }
+            if (node.right != null) {
+                q.add(new AbstractMap.SimpleEntry<Node, Integer>(node.right, hd+1));
+            }
+        }
+        List<Integer> ans = new ArrayList<>();
+        for (Map.Entry<Integer, Node> element: bottomNodePerHorizontalDistance.entrySet()) {
+            ans.add(element.getValue().data);
+        }
+        return ans;
+    }
+
     public static void main(String[] args) throws FileNotFoundException {
         System.setIn(new FileInputStream("/Users/development/Devwork/Java/IdeaProjects/JavaLearning/src/com/" +
                 "company/aftergapinterviewprep/binary_tree_input1.txt"));
@@ -149,6 +203,22 @@ public class RecentLearnings33 {
         }
         System.out.println("The Right-View of the given binary tree is as follows - ");
         for (int element: rightView) {
+            System.out.print(element + " ");
+        }
+        System.out.println();
+
+        // Top View of a Binary Tree
+        List<Integer> topViewList = topViewOfATree(root);
+        System.out.println("The Top-View of the given binary tree is as follows - ");
+        for (int element: topViewList) {
+            System.out.print(element + " ");
+        }
+        System.out.println();
+
+        // Bottom View of a Binary Tree
+        List<Integer> bottomViewList = bottomViewOfATree(root);
+        System.out.println("The Bottom-View of the given binary tree is as follows - ");
+        for (int element: bottomViewList) {
             System.out.print(element + " ");
         }
         System.out.println();
