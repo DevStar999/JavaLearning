@@ -110,6 +110,69 @@ public class RecentLearnings35 {
         return checkValidBSTMethod3(root.right);
     }
 
+    // (4) Insert a value into the BST
+    // [Note - If the value to be entered is already present, then do not modify the BST]
+    // Time Complexity -> O(n), Space Complexity -> O(n)
+    public static Node insertNodeInBST(Node root, int key) {
+        if (root == null) return new Node(key);
+
+        if (key < root.data) {
+            root.left = insertNodeInBST(root.left, key);
+        } else if (key > root.data) {
+            root.right = insertNodeInBST(root.right, key);
+        }
+
+        return root;
+    }
+
+    // (5) Simple minimum value in a Binary Tree method
+    /* Using the following simple version of min value in a BST, since we know that the given BST for this function
+       call will not be an empty BST */
+    public static int minValInTreeSimple(Node root) {
+        if (root == null) return Integer.MAX_VALUE;
+
+        return Math.min(root.data, Math.min(minValInTree(root.left), minValInTree(root.right)));
+    }
+
+    // (6) Delete a value into the BST
+    // [Note - If the value is not present int the BST, ignore and return]
+    // Time Complexity -> O(n), Space Complexity -> O(n)
+    public static Node deleteNodeInBST(Node root, int key) {
+        if (root == null) return null;
+
+        if (key < root.data) {
+            root.left = deleteNodeInBST(root.left, key);
+        } else if (key > root.data) {
+            root.right = deleteNodeInBST(root.right, key);
+        } else { // key == root.val is true
+            if (root.left == null && root.right == null) { // Current node has NO children
+                return null;
+            } else if (root.left != null && root.right == null) { // Current node has 1 child i.e. left child
+                return root.left;
+            } else if (root.left == null && root.right != null) { // Current node has 1 child i.e. right child
+                return root.right;
+            } else { // Current node has both children
+                int subValue = minValInTreeSimple(root.right); // Inorder Successor for current node value
+                root.data = subValue; // Replacing with current node value, so as to delete key
+                root.right = deleteNodeInBST(root.right, subValue); // Now, recursing to delete the subValue
+            }
+        }
+
+        return root;
+    }
+
+    // (7) Method to convert a sorted array into a balanced BST
+    public static Node convertToBST(int[] arr, int start, int end) {
+        if (start > end) return null;
+
+        int mid = start + (end - start) / 2;
+        Node root = new Node(arr[mid]);
+        root.left = convertToBST(arr, start, mid-1);
+        root.right = convertToBST(arr, mid+1, end);
+
+        return root;
+    }
+
     public static void main(String[] args) throws FileNotFoundException {
         System.setIn(new FileInputStream("/Users/development/Devwork/Java/IdeaProjects/JavaLearning/src/com/" +
                 "company/aftergapinterviewprep/bst_input1.txt"));
@@ -147,5 +210,27 @@ public class RecentLearnings35 {
         } else {
             System.out.println("the given tree is NOT a BST");
         }
+
+        // Insert a value into the BST
+        int insertionValue = 8;
+        root = insertNodeInBST(root, insertionValue);
+        System.out.println("The InOrder traversal of the tree is as follows - ");
+        inOrderTraversal(root);
+        System.out.println();
+
+        // Delete a value from the BST
+        int deletionValue = 8;
+        root = deleteNodeInBST(root, deletionValue);
+        System.out.println("The InOrder traversal of the tree is as follows - ");
+        inOrderTraversal(root);
+        System.out.println();
+
+        // Converting a sorted array into a BST
+        int[] sortedArray = {1, 2, 4, 7, 10};
+        int n = sortedArray.length, start = 0, end = n-1;
+        Node rootBST = convertToBST(sortedArray, start, end);
+        System.out.println("The InOrder traversal of the newly generated BST from the Sorted Array is as follows - ");
+        inOrderTraversal(rootBST);
+        System.out.println();
     }
 }
