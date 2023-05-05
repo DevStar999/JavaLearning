@@ -14,7 +14,9 @@ import java.util.TreeMap;
 
 @SuppressWarnings("DuplicatedCode")
 public class RecentLearnings33 {
-    /* Binary Tree and Binary Search Tree - Level Order Traversal, Left-View, Right-View, Top-View & Bottom-View */
+    /* Binary Tree and Binary Search Tree - Level Order Traversal, Left-View, Right-View,
+                                            Top-View, Bottom-View & Vertical Order Traversal
+    */
 
     private static Scanner input;
 
@@ -164,6 +166,39 @@ public class RecentLearnings33 {
         return ans;
     }
 
+    // Vertical Order Traversal of a Binary Tree
+    // [Note - If more than one element is present for the same horizontal distance at the same level then print in the
+    // order of their level order traversal]
+    public static List<Integer> verticalOrderTraversal(Node root) {
+        TreeMap<Integer, List<Node>> nodesPerHorizontalDistance = new TreeMap<>();
+        if (root == null) return new ArrayList<>();
+        Queue<Map.Entry<Node, Integer>> q = new ArrayDeque<>();
+        q.add(new AbstractMap.SimpleEntry<Node, Integer>(root, 0));
+        while (q.size() > 0) {
+            Map.Entry<Node, Integer> top = q.poll();
+            Node node = top.getKey();
+            int hd = top.getValue();
+            if (!nodesPerHorizontalDistance.containsKey(hd)){
+                nodesPerHorizontalDistance.put(hd, new ArrayList<>() {{add(node);}});
+            } else {
+                nodesPerHorizontalDistance.get(hd).add(node);
+            }
+            if (node.left != null) {
+                q.add(new AbstractMap.SimpleEntry<Node, Integer>(node.left, hd-1));
+            }
+            if (node.right != null) {
+                q.add(new AbstractMap.SimpleEntry<Node, Integer>(node.right, hd+1));
+            }
+        }
+        List<Integer> ans = new ArrayList<>();
+        for (Map.Entry<Integer, List<Node>> element: nodesPerHorizontalDistance.entrySet()) {
+            for (Node node: element.getValue()) {
+                ans.add(node.data);
+            }
+        }
+        return ans;
+    }
+
     public static void main(String[] args) throws FileNotFoundException {
         System.setIn(new FileInputStream("/Users/development/Devwork/Java/IdeaProjects/JavaLearning/src/com/" +
                 "company/aftergapinterviewprep/binary_tree_input1.txt"));
@@ -219,6 +254,14 @@ public class RecentLearnings33 {
         List<Integer> bottomViewList = bottomViewOfATree(root);
         System.out.println("The Bottom-View of the given binary tree is as follows - ");
         for (int element: bottomViewList) {
+            System.out.print(element + " ");
+        }
+        System.out.println();
+
+        // Vertical Order Traversal of a Binary Tree
+        List<Integer> verticalOrderTraversal = verticalOrderTraversal(root);
+        System.out.println("The Vertical Order Traversal of the given binary tree is as follows - ");
+        for (int element: verticalOrderTraversal) {
             System.out.print(element + " ");
         }
         System.out.println();
