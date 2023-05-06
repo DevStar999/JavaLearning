@@ -3,12 +3,12 @@ package com.company.aftergapinterviewprep.part2;
 import java.io.FileNotFoundException;
 
 class Node {
-    int val;
+    int data;
     Node next;
 
     public Node() {}
-    public Node(int val) { this.val = val; }
-    public Node(int val, Node next) { this.val = val; this.next = next; }
+    public Node(int data) { this.data = data; }
+    public Node(int data, Node next) { this.data = data; this.next = next; }
 }
 
 @SuppressWarnings("DuplicatedCode")
@@ -20,7 +20,7 @@ public class RecentLearnings27 {
         System.out.println("The traversal of a linked list is as follows - ");
         Node cur = head;
         while (cur != null) {
-            System.out.print(cur.val + " ");
+            System.out.print(cur.data + " ");
             cur = cur.next;
         }
         System.out.println();
@@ -130,6 +130,66 @@ public class RecentLearnings27 {
         Node toAdd = new Node(value);
         toAdd.next = mid.next;
         mid.next = toAdd;
+
+        return head;
+    }
+
+    public static Node deleteNodeByGivenNode(Node head, Node toDelete) {
+        Node prev = null, cur = head;
+        while (cur != null) {
+            if (cur == toDelete) break;
+
+            prev = cur;
+            cur = cur.next;
+        }
+        if (cur == null) { // Then 'toDelete' node was not found in the given LinkedList
+            return head;
+        }
+
+        if (prev == null) { // The 'toDelete' node is the 'head' node itself
+            head = cur.next;
+        } else {
+            prev.next = cur.next;
+        }
+
+        return head;
+    }
+
+    // Here, we will delete only the first occurrence of the 'value'
+    public static Node deleteNodeByGivenValue(Node head, int value) {
+        Node prev = null, cur = head;
+        while (cur != null) {
+            if (cur.data == value) break;
+
+            prev = cur;
+            cur = cur.next;
+        }
+        if (cur == null) { // Then 'toDelete' node was not found in the given LinkedList
+            return head;
+        }
+
+        if (prev == null) { // The 'toDelete' node is the 'head' node itself
+            head = cur.next;
+        } else {
+            prev.next = cur.next;
+        }
+
+        return head;
+    }
+
+    // The index is 0-based
+    public static Node deleteNodeByGivenIndex(Node head, int index) {
+        Node prev = null, cur = head;
+        while (index > 0) {
+            prev = cur;
+            cur = cur.next;
+            index--;
+        }
+        if (prev == null) {
+            head = cur.next;
+        } else {
+            prev.next = cur.next;
+        }
 
         return head;
     }

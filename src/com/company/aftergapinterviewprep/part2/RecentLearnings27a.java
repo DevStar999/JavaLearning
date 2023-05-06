@@ -11,9 +11,9 @@ public class RecentLearnings27a {
         Node cur = head;
         while (cur != null) {
             if (cur.next != null) {
-                System.out.print(cur.val + " -> ");
+                System.out.print(cur.data + " -> ");
             } else {
-                System.out.print(cur.val);
+                System.out.print(cur.data);
             }
             cur = cur.next;
         }
