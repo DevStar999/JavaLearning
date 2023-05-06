@@ -1,5 +1,7 @@
 package com.company.strings;
 
+import java.util.Arrays;
+
 public class Strings2 {
     public static boolean checkAlphaNumericForCharacter(char ch) {
         return ((ch >= '0' && ch <= '9') || (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z'));
@@ -61,5 +63,11 @@ public class Strings2 {
         char[] chArray = {'c', 'h', 'a', 'r', 'A', 'r', 'r', 'a', 'y'};
         String chString = String.valueOf(chArray);
         System.out.println("chString = " + chString);
+
+        // Splitting a string at a certain substring using the .split() method which return a String array
+        String mainString = "This is an example string for split method";
+        String pattern = " ";
+        String[] tokens = mainString.split(pattern);
+        System.out.println("tokens[] = " + Arrays.toString(tokens));
     }
 }
