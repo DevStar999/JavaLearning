@@ -240,6 +240,20 @@ public class RecentLearnings27 {
         // 'meet' node and remove it's link to the 'ans' node
     }
 
+    public static Node reverseGivenLinkedList(Node head) {
+        if (head == null || head.next == null) return head; // For LinkedList of size 0 or 1
+
+        Node prev = null, cur = head;
+        while (cur != null) {
+            Node nextNode = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = nextNode;
+        }
+
+        return prev;
+    }
+
     public static void main(String[] args) throws FileNotFoundException {
         Node n1 = new Node(10);
         Node n2 = new Node(15);
