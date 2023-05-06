@@ -194,6 +194,52 @@ public class RecentLearnings27 {
         return head;
     }
 
+    public static boolean detectLoop(Node head){
+        boolean ans = false;
+        Node slow = head, fast = head;
+        while (fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if (slow == fast) {
+                ans = true;
+                break;
+            }
+        }
+        return ans;
+    }
+
+    // This method is same as 'detectLoop' method, only difference is here we return the meeting node or return null
+    public static Node meetPointInCycledLinkedList(Node head) {
+        Node meetPoint = null;
+        Node slow = head, fast = head;
+        while (fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if (slow == fast) {
+                meetPoint = slow;
+                break;
+            }
+        }
+        return meetPoint;
+    }
+
+    // This method will return null if there is no cycle in the given LinkedList
+    public static Node findFirstNodeOfCycleInLinkedList(Node head) {
+        Node meet = meetPointInCycledLinkedList(head);
+        Node cur = head;
+        // The idea is to iterate from the head and the meet point and at the point where these two meet, that is the
+        // node which is the first node of the cycle in the LinkedList (This approach has a prove on why this works)
+        while (cur != meet) {
+            cur = cur.next;
+            meet = meet.next;
+        }
+        return cur;
+        // The code to remove cycle is also very similar to this, we just need the node previous to the 'ans' for the
+        // 'meet' node and remove it's link to the 'ans' node
+    }
+
     public static void main(String[] args) throws FileNotFoundException {
         Node n1 = new Node(10);
         Node n2 = new Node(15);
