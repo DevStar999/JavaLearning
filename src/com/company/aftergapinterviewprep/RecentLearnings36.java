@@ -20,6 +20,7 @@ class DisjointSetBasic {
     public void union(int x, int y) {
         int xRep = find(x);
         int yRep = find(y);
+        if (xRep == yRep) return;
         rep[yRep] = xRep;
     }
 
