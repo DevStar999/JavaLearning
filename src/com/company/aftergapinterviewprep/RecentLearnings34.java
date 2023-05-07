@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 @SuppressWarnings("DuplicatedCode")
 public class RecentLearnings34 {
-    /* Binary Tree - Miscellaneous [Lowest Common Ancestor, Time to Burn a Tree] */
+    /* Binary Tree - Lowest Common Ancestor (LCA) */
 
     private static Scanner input;
 
