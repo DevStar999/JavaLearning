@@ -1,15 +1,16 @@
-package com.company.aftergapinterviewprep;
+package com.company.aftergapinterviewprep.part3;
+
+import com.company.aftergapinterviewprep.part3.Node;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
 @SuppressWarnings("DuplicatedCode")
-public class RecentLearnings32 {
+public class RL32BTAndBSTPart2 {
     /* Binary Tree and Binary Search Tree - Basics, Part 2 */
 
     private static Scanner input;

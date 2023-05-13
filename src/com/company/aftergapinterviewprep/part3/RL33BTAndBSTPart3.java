@@ -1,4 +1,6 @@
-package com.company.aftergapinterviewprep;
+package com.company.aftergapinterviewprep.part3;
+
+import com.company.aftergapinterviewprep.part3.Node;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -13,7 +15,7 @@ import java.util.Scanner;
 import java.util.TreeMap;
 
 @SuppressWarnings("DuplicatedCode")
-public class RecentLearnings33 {
+public class RL33BTAndBSTPart3 {
     /* Binary Tree and Binary Search Tree - Level Order Traversal, Left-View, Right-View,
                                             Top-View, Bottom-View & Vertical Order Traversal
     */

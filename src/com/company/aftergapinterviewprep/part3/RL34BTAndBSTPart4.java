@@ -1,11 +1,13 @@
-package com.company.aftergapinterviewprep;
+package com.company.aftergapinterviewprep.part3;
+
+import com.company.aftergapinterviewprep.part3.Node;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 @SuppressWarnings("DuplicatedCode")
-public class RecentLearnings34 {
+public class RL34BTAndBSTPart4 {
     /* Binary Tree - Lowest Common Ancestor (LCA) */
 
     private static Scanner input;

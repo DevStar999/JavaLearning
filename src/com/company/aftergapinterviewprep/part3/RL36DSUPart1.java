@@ -1,4 +1,4 @@
-package com.company.aftergapinterviewprep;
+package com.company.aftergapinterviewprep.part3;
 
 import java.io.FileNotFoundException;
 
@@ -30,7 +30,7 @@ class DisjointSetBasic {
 }
 
 @SuppressWarnings("DuplicatedCode")
-public class RecentLearnings36 {
+public class RL36DSUPart1 {
     /* Disjoint Set - Basic Implementation */
 
     public static void main(String[] args) throws FileNotFoundException {

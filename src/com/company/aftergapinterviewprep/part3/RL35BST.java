@@ -1,4 +1,4 @@
-package com.company.aftergapinterviewprep;
+package com.company.aftergapinterviewprep.part3;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 
 @SuppressWarnings("DuplicatedCode")
-public class RecentLearnings35 {
+public class RL35BST {
     /* Binary Search Tree - Basics */
     // Notes -> (1) The InOrder Traversal of a BST gives the nodes in a sorted sequence
     // (2) Properties of a BST are as follows -

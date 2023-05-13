@@ -1,4 +1,4 @@
-package com.company.aftergapinterviewprep;
+package com.company.aftergapinterviewprep.part3;
 
 import java.io.FileNotFoundException;
 
@@ -46,7 +46,7 @@ class DisjointSet {
 }
 
 @SuppressWarnings("DuplicatedCode")
-public class RecentLearnings37 {
+public class RL37DSUPart2 {
     /* Disjoint Set - Optimised Implementation Union by Rank and Path Compression */
     // (a) Union by Rank & (b) Path Compression are 2 optimisations for the Disjoint Set Data Structure
 

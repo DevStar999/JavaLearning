@@ -1,4 +1,4 @@
-package com.company.aftergapinterviewprep;
+package com.company.aftergapinterviewprep.part3;
 
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -13,7 +13,7 @@ class Node {
 }
 
 @SuppressWarnings("DuplicatedCode")
-public class RecentLearnings31 {
+public class RL31BTAndBSTPart1 {
     /* Binary Tree and Binary Search Tree - Basics, Part 1 */
     // Resources -> https://www.youtube.com/watch?v=QhIM-G7FAow&list=PLUcsbZa0qzu0g_LceXxWu6ICc2o8SiAhJ&index=1
     // Notes -> (1) A tree with each node having at most 2 children is Binary Tree
