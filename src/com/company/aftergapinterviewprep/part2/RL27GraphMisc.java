@@ -18,7 +18,7 @@ class Edge {
     }
 }
 
-public class RecentLearnings28 {
+public class RL27GraphMisc {
     /* Graphs - Miscellaneous Topics */
     // Resources -> (1) https://www.youtube.com/watch?v=Zbbe9FYVnM4&list=PLUcsbZa0qzu1EhwPcQfbDfl9VitpSUgBp&index=7
     // (2) https://www.youtube.com/watch?v=kXiqvMykeJA&list=PLUcsbZa0qzu1EhwPcQfbDfl9VitpSUgBp&index=9

@@ -3,7 +3,7 @@ package com.company.aftergapinterviewprep.part2;
 import java.io.FileNotFoundException;
 
 /* Implementation of 'Trie' Data Structure (Generalised, less preferred) */
-// Check out the Trie code in the file RecentLearnings23.java file
+// Check out the Trie code in the file RL23TriePart2.java file
 // Notes - (1) A Trie is also called as a 'Prefix Tree'
 // (2) It is an extremely useful data structure for solving String related problems and sometimes it also comes in handy
 // for bit related questions
@@ -22,7 +22,7 @@ class TrieNode {
     }
 }
 
-public class RecentLearnings22 {
+public class RL22TriePart1 {
     // Method to insert string into TrieNode
     static void insert(TrieNode root, String key) {
         TrieNode curNode = root;

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class RecentLearnings24 {
+public class RL24GraphBasics {
     /* Graphs - Basics */
     // Here, we have looked at the basics of an Undirected Graph
 

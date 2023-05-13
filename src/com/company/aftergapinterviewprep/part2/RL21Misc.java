@@ -29,7 +29,7 @@ class CustomObject {
 }
 
 @SuppressWarnings("DuplicateExpressions")
-public class RecentLearnings21 {
+public class RL21Misc {
     /* Miscellaneous Topics */
 
     /* (1) Fast Exponentiation */

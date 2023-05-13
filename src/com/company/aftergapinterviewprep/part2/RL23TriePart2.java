@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 
 /* Implementation of 'Trie' Data Structure (Most commonly used implementation, preferred) */
 @SuppressWarnings("DuplicatedCode")
-public class RecentLearnings23 {
+public class RL23TriePart2 {
     static class TrieNode {
         static final int MAX_SIZE = 26;
         TrieNode[] children;

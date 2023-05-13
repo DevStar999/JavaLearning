@@ -13,8 +13,8 @@ import java.util.Set;
 import java.util.Stack;
 
 @SuppressWarnings("DuplicatedCode")
-public class RecentLearnings26 {
-    /* Graphs - Basics, Part 2 */
+public class RL26GraphCycle {
+    /* Graphs - Cycle Detection */
 
     public static void bfs(int v, List<List<Integer>> adj) {
         boolean[] visited = new boolean[v];

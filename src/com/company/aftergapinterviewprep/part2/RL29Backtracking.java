@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @SuppressWarnings("DuplicatedCode")
-public class RecentLearnings29 {
+public class RL29Backtracking {
     /* Backtracking */
     // Resources -> (1) https://www.youtube.com/watch?v=MHXR4PCY8c0&list=PLUcsbZa0qzu3yNzzAxgvSgRobdUUJvz7p&index=11
     // (2) https://www.youtube.com/watch?v=Zq4upTEaQyM

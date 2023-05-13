@@ -10,7 +10,7 @@ import java.util.Scanner;
 import java.util.Stack;
 
 @SuppressWarnings("DuplicatedCode")
-public class RecentLearnings25 {
+public class RL25GraphTraversal {
     /* Graphs - Traversal */
 
     // BFS -> Time = O(V + E), Auxiliary Space = O(V) [For the Queue] [Here, V = no. of vertices, E = no. of edges]
