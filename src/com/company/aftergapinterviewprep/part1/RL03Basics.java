@@ -11,7 +11,7 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Stack;
 
-public class RecentLearnings3 {
+public class RL03Basics {
 
     public static void main(String[] args) throws FileNotFoundException {
         //System.setIn(new FileInputStream("/Users/development/Devwork/Java/IdeaProjects/JavaLearning/src/com/" +

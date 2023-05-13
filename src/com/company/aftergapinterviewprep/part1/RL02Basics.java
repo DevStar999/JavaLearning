@@ -5,7 +5,7 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Random;
 
-public class RecentLearnings2 {
+public class RL02Basics {
 
     public static void main(String[] args) throws FileNotFoundException {
         //System.setIn(new FileInputStream("/Users/development/Devwork/Java/IdeaProjects/JavaLearning/src/com/" +

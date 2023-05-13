@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class RecentLearnings20 {
+public class RL20PrimeSieve {
     /* Prime Sieve (Sieve of Eratosthenes) */
 
     // Time = O(n * log(log(n))), Space = O(n)

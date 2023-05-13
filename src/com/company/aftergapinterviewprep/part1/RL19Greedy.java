@@ -2,7 +2,7 @@ package com.company.aftergapinterviewprep.part1;
 
 import java.io.FileNotFoundException;
 
-public class RecentLearnings19 {
+public class RL19Greedy {
     /* Greedy Algorithms */
     // Resource -> (Good Intro) - https://www.youtube.com/watch?v=HzeK7g8cD0Y&list=PLqM7alHXFySESatj68JKWHRVhoJ1BxtLW
     // Notes -> (*) Definition - Greedy Algorithm is an algorithmic paradigm which follows the problem solving approach

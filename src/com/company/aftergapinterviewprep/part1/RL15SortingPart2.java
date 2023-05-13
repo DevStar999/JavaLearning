@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.Random;
 
-public class RecentLearnings15 {
+public class RL15SortingPart2 {
     /* Sorting Algorithms - Part 2 */
 
     // (1) Merge Sort -> Time = O(n * log(n)), Space = O(n)

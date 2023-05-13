@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class RecentLearnings9 {
+public class RL09BinarySearchBuiltIn {
     /* Resources - (1) https://www.geeksforgeeks.org/arrays-binarysearch-java-examples-set-1/
        (2) https://www.geeksforgeeks.org/arrays-binarysearch-in-java-with-examples-set-2-search-in-subarray/
        (3) https://www.geeksforgeeks.org/collections-binarysearch-java-examples/

@@ -2,7 +2,7 @@ package com.company.aftergapinterviewprep.part1;
 
 import java.io.FileNotFoundException;
 
-public class RecentLearnings10 {
+public class RL10BitManipulation {
     /* Bit Manipulation */
     // Resources -> (i) https://www.youtube.com/watch?v=Db8OmMfzwl8 (This is part 1 of 3, watch all 3 for all basics)
     // (ii) About 2 pages of handwritten notes in new book

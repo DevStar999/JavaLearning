@@ -3,7 +3,7 @@ package com.company.aftergapinterviewprep.part1;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
 
-public class RecentLearnings18 {
+public class RL18DPPart2 {
     /* Dynamic Programming - Part 2, Standard DP Problems */
 
     // (1) Longest Increasing Subsequence (LIS) - Given an array find the length of the longest strictly increasing subsequence

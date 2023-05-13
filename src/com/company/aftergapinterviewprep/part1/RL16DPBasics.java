@@ -3,7 +3,7 @@ package com.company.aftergapinterviewprep.part1;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
 
-public class RecentLearnings16 {
+public class RL16DPBasics {
     /* Dynamic Programming - Basics */
     // Review the notes in the Notes app in the 'Interview Prep' folder
     // The are 2 methods to store the results in memory and solve the problems which can be solved using DP -

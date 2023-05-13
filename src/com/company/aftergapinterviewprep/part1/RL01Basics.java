@@ -19,7 +19,7 @@ class CustomComparator implements Comparator<Pair<Integer, Integer>> {
     }
 }
 
-public class RecentLearnings1 {
+public class RL01Basics {
     // Kadane's Algorithm
     // Question Link -> https://leetcode.com/problems/maximum-subarray/
 

@@ -3,7 +3,7 @@ package com.company.aftergapinterviewprep.part1;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
 
-public class RecentLearnings11 {
+public class RL11SortingPart1 {
     /* Sorting Algorithms - Part 1 */
     // Resource -> youtube.com/playlist?list=PL2_aWCzGMAwKedT2KfDMB9YA5DgASZb3U
 

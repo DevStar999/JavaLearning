@@ -3,10 +3,10 @@ package com.company.aftergapinterviewprep.part1;
 import java.io.FileNotFoundException;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Set;
 import java.util.Stack;
@@ -14,15 +14,20 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 
 @SuppressWarnings("DuplicatedCode")
-public class RecentLearnings5 {
+public class RL07TraversalAll {
 
     public static void main(String[] args) throws FileNotFoundException {
-        /* (I) Most commonly used iteration and traversal techniques are as follows */
+        /* All iteration and traversal techniques are as follows */
         // For Arrays
         int[] arr = new int[10];
-        for (int i=0; i<10; i++) {
+        for (int i=0; i<10; i++) { // (1) Using index [1st preference]
             arr[i] = i;
         }
+
+        System.out.println("For Arrays - Using foreach loop");
+        for (int element: arr) { // (2) Using foreach [2nd preference]
+            System.out.print(element + " ");
+        } System.out.println();
 
         // For Strings
         String str = "SampleString";
@@ -37,9 +42,14 @@ public class RecentLearnings5 {
             Integer temp = list.get(i);
         }
 
+        System.out.println("For List i.e. ArrayList - Using foreach loop");
+        for (Integer element: list) { // (2) Using foreach loop [2nd preference]
+            System.out.print(element + " ");
+        } System.out.println();
+
         Iterator<Integer> it = list.iterator();
         System.out.println("For List i.e. ArrayList - Using iterator");
-        while (it.hasNext()) { // (2) Using iterator [2nd preference]
+        while (it.hasNext()) { // (3) Using iterator [3rd preference]
             System.out.print(it.next() + " ");
         } System.out.println();
 
@@ -58,6 +68,10 @@ public class RecentLearnings5 {
             System.out.print(itStack.next() + " ");
         } System.out.println();
 
+        System.out.println("For Stack - Using index");
+        for (int i=0; i<st.size(); i++) { // (3) Shows in the order in which they were inserted
+            System.out.print(st.get(i) + " ");
+        } System.out.println();
 
         // For Queue i.e. ArrayDeque & PriorityQueue
         Queue<Integer> q = new ArrayDeque();
@@ -67,6 +81,13 @@ public class RecentLearnings5 {
             System.out.print(q.poll() + " ");
         } System.out.println();
 
+        Queue<Integer> pq = new PriorityQueue();
+        pq.add(15); pq.add(24); pq.add(8); pq.add(32); pq.add(18);
+        Iterator<Integer> itQueue = pq.iterator();
+        System.out.println("For Queue i.e. ArrayDeque & PriorityQueue - Using iterator");
+        while (itQueue.hasNext()) { // (2) Shows the order in which they exist from head to tail in the PriorityQueue
+            System.out.print(itQueue.next() + " ");
+        } System.out.println();
 
         // For Set
         Set<Integer> set1 = new TreeSet();
@@ -85,13 +106,5 @@ public class RecentLearnings5 {
         for (Map.Entry<String, Integer> element: map.entrySet()) {
             System.out.println(element.getKey() + " -> " + element.getValue());
         }
-
-        // (II) 'Collections' class - Most commonly used methods
-        List<Integer> col = new ArrayList();
-        col.add(1); col.add(2); col.add(3); col.add(4); col.add(5);
-        Collections.reverse(col); // (1) reverse() method to reverse the order of the elements in the collection
-        Collections.shuffle(col); // (2) randomly permute elements in the collection with shuffle() method
-        Collections.sort(col); // (3) sort() method is used to sort (in ascending order) the elements in the collection
-        Collections.sort(col, Collections.reverseOrder()); // (4) reverseOrder() allows us to sort the elements in descending order
     }
 }

@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecentLearnings17 {
+public class RL17DPPart1 {
     /* Dynamic Programming - Part 1, Standard DP Problems */
 
     // (1) Longest Common Subsequence - Given 2 strings find the length of the longest common subsequence
