@@ -49,6 +49,7 @@ class DisjointSet {
 public class RL37DSUPart2 {
     /* Disjoint Set - Optimised Implementation Union by Rank and Path Compression */
     // (a) Union by Rank & (b) Path Compression are 2 optimisations for the Disjoint Set Data Structure
+    // Questions Link -> https://www.hackerearth.com/challenges/competitive/code-monk-disjoint-set-union/problems/
 
     public static void main(String[] args) throws FileNotFoundException {
         int n = 8;
