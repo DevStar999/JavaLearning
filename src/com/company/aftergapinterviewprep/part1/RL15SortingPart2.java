@@ -14,44 +14,51 @@ public class RL15SortingPart2 {
     // (b) It is recursive in nature
     // (c) It is a Stable sorting algorithm i.e. is saves the relative order of the elements with same value as in the original array
     // (d) It is not an In-Place algorithm as it uses Auxiliary Space of O(n)
-    public static void merge(int[] left, int[] right, int[] arr) {
-        int i=0, j=0, k=0;
-        while (i < left.length && j < right.length) {
-            if (left[i] <= right[j]) {
-                arr[k] = left[i];
-                i++;
+    public static void merge(int[] arr, int start, int mid, int end) {
+        // Computing the sizes of the arrays as follows -
+        int n1 = mid - start + 1;
+        int n2 = end - (mid + 1) + 1;
+
+        // Populating the sorted elements in the ranges (start, mid) & (mid + 1, end) in 'left' and 'right' resp.
+        int[] left = new int[n1], right = new int[n2];
+        for (int i=0; i<n1; i++) {
+            left[i] = arr[start + i];
+        }
+        for (int i=0; i<n2; i++) {
+            right[i] = arr[mid + 1 + i];
+        }
+
+        // Merging the 2 sorted arrays into 1 as follows
+        int index1 = 0, index2 = 0, index = start;
+        while (index1 < n1 && index2 < n2) {
+            if (left[index1] <= right[index2]) {
+                arr[index] = left[index1];
+                index1++;
             } else {
-                arr[k] = right[j];
-                j++;
+                arr[index] = right[index2];
+                index2++;
             }
-            k++;
+            index++;
         }
-        while (i < left.length) {
-            arr[k] = left[i];
-            k++; i++;
+        while (index1 < n1) { // If elements from 'right' were exhausted first
+            arr[index] = left[index1];
+            index++; index1++;
         }
-        while (j < right.length) {
-            arr[k] = right[j];
-            k++; j++;
+        while (index2 < n2) { // If elements from 'left' were exhausted first
+            arr[index] = right[index2];
+            index++; index2++;
         }
     }
 
-    public static void mergeSort(int[] arr) {
-        int n = arr.length;
-        if (n < 2) {
-            return;
-        }
-        int mid = n/2;
-        int[] left = new int[mid], right = new int[n-mid];
-        for (int i=0; i<mid; i++) {
-            left[i] = arr[i];
-        }
-        for (int i=mid; i<n; i++) {
-            right[i-mid] = arr[i];
-        }
-        mergeSort(left);
-        mergeSort(right);
-        merge(left, right, arr);
+    public static void mergeSort(int[] arr, int start, int end) {
+        if (start > end) return; // Invalid Range
+        if (start == end) return; // Array of size 1 is already sorted
+
+        int n = end - start + 1;
+        int mid = start + (n/2) - 1;
+        mergeSort(arr, start, mid);
+        mergeSort(arr, mid+1, end);
+        merge(arr, start, mid, end);
     }
 
     // (2) Quick Sort -> Time = O(n * log(n)) [Average Case]; Time = O(n ^ 2) [Worst Case], Space = O(1)
@@ -101,7 +108,7 @@ public class RL15SortingPart2 {
     public static void main(String[] args) throws FileNotFoundException {
         // (1) For mergeSort Sort
         int arr1[] = {15, 29, 16, 21, 7, 2, 5, 4};
-        mergeSort(arr1);
+        mergeSort(arr1, 0, arr1.length - 1);
         System.out.println("After Merge Sort = " + Arrays.toString(arr1));
 
         // (2) For quickSort Sort
