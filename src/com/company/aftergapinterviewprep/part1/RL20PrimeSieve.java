@@ -8,6 +8,10 @@ import java.util.List;
 
 public class RL20PrimeSieve {
     /* Prime Sieve (Sieve of Eratosthenes) */
+    // Resources -> https://www.youtube.com/watch?v=T8PaMnb0GPo&list=PLauivoElc3ggagradg8MfOZreCMmXMmJ-&index=73
+    // Ep 59, 60, 63, 64.1, 64.2 an overview of these videos is good to cover the topic
+    // Question Links -> (1) https://www.hackerearth.com/problem/algorithm/monk-and-divisor-conundrum-56e0eb99/
+    // (2) https://leetcode.com/problems/count-primes/
 
     // Time = O(n * log(log(n))), Space = O(n)
     public static void basicImplementationOfPrimeSieve(int n) {
