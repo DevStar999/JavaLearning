@@ -61,7 +61,7 @@ public class RL21Misc {
         pairAlternative.setValue(45); // We do NOT get a setKey() method
 
         // (3) Example on how to override the 'equals' and 'hashcode' methods for the custom class so that it can be
-        // used correctly with 'Set' data structure
+        // used correctly with 'Set' and 'Map' data structure
         Set<CustomObject> set = new HashSet<>();
         CustomObject customObject = new CustomObject(2, 3, "String Value");
         set.add(customObject);
@@ -70,5 +70,8 @@ public class RL21Misc {
         } else {
             System.out.println("Set related code is NOT working now");
         }
+        // For 'Map' example, check out this example -> https://leetcode.com/problems/target-sum/submissions/951936883/
+        // Also, check out the submission just before it, which caused a TLE, where we did not override the 'equals' and
+        // 'hashCode' methods
     }
 }
