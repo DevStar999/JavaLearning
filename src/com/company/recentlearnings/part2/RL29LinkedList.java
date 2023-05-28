@@ -12,7 +12,7 @@ class Node {
 }
 
 @SuppressWarnings("DuplicatedCode")
-public class RL28LinkedList {
+public class RL29LinkedList {
     /* LinkedList - Basics, Part 1 */
     // Notes -> (1) As per convention, the 1st node in the LinkedList is called 'head'
 
