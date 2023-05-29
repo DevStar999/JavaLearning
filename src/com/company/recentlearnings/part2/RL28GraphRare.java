@@ -47,12 +47,20 @@ public class RL28GraphRare {
     }
 
     // (1) Kosaraju's Algorithm for finding the Strongly Connected Components (SCCs)
+    // Resource -> https://www.youtube.com/watch?v=ndfjV_yHpgQ
     // Time -> O(V + E), Space -> O(V + E) [Since, we would need this much space for the auxiliary transpose graph]
     // Notes -> (1) A strongly connected component is a connected component in a graph, where from any one vertex
     //              in the connected component, we can traverse to any other vertex in that connected component
     //          (2) This algorithm is for Directed graphs. However, we can convert an Undirected graph to a directed
     //              graph, by replacing the undirected edges with 2 directed edges in both directions and then use this
     //              algorithm
+    //          (3) The intuition behind why this works is as follows -
+    //              [Resource - https://www.youtube.com/watch?v=R6uoSjZ2imo (3:40 to 9:00)]
+    //              So, if we sort all the nodes based on their finishing time (finishing time of traversal, this is
+    //              basically Topological Sorting), we can traverse the entire graph from any node in the 1st SCC, but
+    //              not from any other SCC. But, now if we take the transpose of the graph and start traversal from the
+    //              1st SCC, then we will not be able to enter any other SCC, so that's why we do the TopoSort, then
+    //              take the transpose of the graph and then do DFS and mark out the SCCs
     public static List<List<Integer>> kosarajuSCC(int v, List<List<Integer>> adj) {
         // Step 1 - Get the Topological Ordering
         List<Integer> topoOrder = topologicalSorting(adj, v);
