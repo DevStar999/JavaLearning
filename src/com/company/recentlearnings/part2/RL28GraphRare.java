@@ -53,7 +53,8 @@ public class RL28GraphRare {
     //              in the connected component, we can traverse to any other vertex in that connected component
     //          (2) This algorithm is for Directed graphs. However, we can convert an Undirected graph to a directed
     //              graph, by replacing the undirected edges with 2 directed edges in both directions and then use this
-    //              algorithm
+    //              algorithm. But, if we are asked a plain and simple question, "Is Kosaraju's algorithm used for
+    //              Directed graphs only?", then we answer YES
     //          (3) The intuition behind why this works is as follows -
     //              [Resource - https://www.youtube.com/watch?v=R6uoSjZ2imo (3:40 to 9:00)]
     //              So, if we sort all the nodes based on their finishing time (finishing time of traversal, this is
