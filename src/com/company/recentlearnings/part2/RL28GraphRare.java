@@ -118,6 +118,84 @@ public class RL28GraphRare {
         return ans;
     }
 
+    public static void tarjanDFS(int node, int parent, List<List<Integer>> adj, int[] disc, int[] low,
+                          boolean[] visited, int timer, List<List<Integer>> bridges) {
+        visited[node] = true;
+        disc[node] = low[node] = timer;
+        timer++;
+
+        for (Integer neighbour: adj.get(node)) {
+            if (!visited[neighbour]) {
+                tarjanDFS(neighbour, node, adj, disc, low, visited, timer, bridges);
+                // We do the following update, because the neighbour's low value may have been updated due to a
+                // Back-Edge and thus we can potentially update the low value of the 'node' as well, as there may be
+                // another path to reach 'node' which would allow us to update the low value of 'node' to a lower value
+                low[node] = Math.min(low[node], low[neighbour]);
+
+                // Checking if edge is bridge with the following condition
+                if (low[neighbour] > disc[node]) {
+                    // Why the above condition works ->
+                    // (a) Case 1 (Interested) -> When condition is TRUE, this means that the only way to reaching to
+                    // 'neighbour' is via 'node', thus, the low[neighbour] > disc[node]
+                    // (b) Case 2 (Ignore) -> When condition is FALSE, this means the low[neighbour] was updated to a
+                    // lower value via a Back-Edge and thus there was a different way to reach neighbour available as well
+                    bridges.add(new ArrayList<>(Arrays.asList(node, neighbour)));
+                }
+            } else {
+                // The neighbour is visited
+                if (neighbour != parent) { // The neighbour is visited and also not a parent, then it is a Back-Edge
+                    // This basically means that we had another path to reach 'node', taking which we could reach 'node'
+                    // in a lesser time. So, we update low[node]
+                    low[node] = Math.min(low[node], disc[neighbour]);
+                }
+            }
+        }
+    }
+
+    // (2) Tarjan's Algorithm for finding the bridges in an undirected graph
+    // Resource -> https://www.youtube.com/watch?v=ndfjV_yHpgQ
+    // Time -> O(V + E), Space -> O(V + E) [Since, we would need this much space for the auxiliary transpose graph]
+    // Notes -> (1) Bridge (Def.) - Bridge is an edge in an undirected graph, on the removal of which, the number of
+    //              connected components in a graph increases
+    //          (2) Back Edge (Def.) - For a node, when it has a visited neighbour and that neighbour is not the parent
+    //              of the node, then the edge between the node and the neighbour is called a Back Edge
+    //
+    public static List<List<Integer>> findBridges(int v, List<List<Integer>> adj) {
+        int[] disc = new int[v]; // An array to store the discovery time of a node
+        Arrays.fill(disc, -1);
+        int[] low = new int[v]; // Lowest time reachable from a node
+        Arrays.fill(low, -1);
+        boolean[] visited = new boolean[v];
+        int timer = 0; // Use, this variable to keep track of the current time and update disc and low times
+        List<List<Integer>> bridges = new ArrayList<>();
+
+        for (int i=0; i<v; i++) {
+            if (!visited[i]) {
+                tarjanDFS(i, -1, adj, disc, low, visited, timer, bridges);
+            }
+        }
+
+        return bridges;
+    }
+
+    // (3) Hypothetical Question -> Find the Bridges in a Directed Graph
+    // Approach -> (1) Remember, the standard question is to find the bridges in an undirected graph using the Tarjan's
+    //             algorithm as above
+    //             (2) First share the definition of a bridge, i.e. an edge in a graph, on removal of which the no. of
+    //             connected components in a graph increases
+    //             (3) In a graph, there are 2 types of connected components ->
+    //             (a) Weakly Connected Components (WCCs) (Often referred as just 'Connected Components' if mentioned
+    //             for a directed graph) - (def.) is a subgraph of a directed graph in which al the vertices are
+    //             connected by some path, regardless of the edge direction.
+    //             (b) Strongly Connected Components (SCCs) - (def.) is a subgraph of a directed graph in which each
+    //             node can be reachable from every other node in the subgraph or that connected component.
+    //             (4) If after removing a bridge, we have to keep
+    //             (i) WCCs -> Then convert the directed graph into it's corresponding undirected graph and find the
+    //             bridges in the undirected graph (Standard question, use Tarjan's algo for this)
+    //             (ii) SCCs -> This is a different question altogether, and more like a research level question.
+    //             The solution approach here could be as follows (Brute Force) ->
+    //             (a) Traverse over all the edges in the graph
+    //             (b) Check if the removal of this edges increases the SCCs in the graph
     public static void main(String[] args) throws FileNotFoundException {
         int vertices = 5;
         List<List<Integer>> adj = new ArrayList<>() {{
