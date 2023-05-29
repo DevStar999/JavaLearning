@@ -135,7 +135,7 @@ public class RL28GraphRare {
                 // Checking if edge is bridge with the following condition
                 if (low[neighbour] > disc[node]) {
                     // Why the above condition works ->
-                    // (a) Case 1 (Interested) -> When condition is TRUE, this means that the only way to reaching to
+                    // (a) Case 1 (Interested) -> When condition is TRUE, this means that the only way of reaching to
                     // 'neighbour' is via 'node', thus, the low[neighbour] > disc[node]
                     // (b) Case 2 (Ignore) -> When condition is FALSE, this means the low[neighbour] was updated to a
                     // lower value via a Back-Edge and thus there was a different way to reach neighbour available as well
@@ -159,7 +159,7 @@ public class RL28GraphRare {
     //              connected components in a graph increases
     //          (2) Back Edge (Def.) - For a node, when it has a visited neighbour and that neighbour is not the parent
     //              of the node, then the edge between the node and the neighbour is called a Back Edge
-    //
+    //          (3) Rest of the helpful notes are written in the code itself
     public static List<List<Integer>> findBridges(int v, List<List<Integer>> adj) {
         int[] disc = new int[v]; // An array to store the discovery time of a node
         Arrays.fill(disc, -1);
@@ -197,6 +197,7 @@ public class RL28GraphRare {
     //             (a) Traverse over all the edges in the graph
     //             (b) Check if the removal of this edges increases the SCCs in the graph
     public static void main(String[] args) throws FileNotFoundException {
+        // (1) Example for Kosaraju's Algorithm is as follows -
         int vertices = 5;
         List<List<Integer>> adj = new ArrayList<>() {{
             add(new ArrayList<>(Arrays.asList(2, 3)));
@@ -211,5 +212,8 @@ public class RL28GraphRare {
         for (List<Integer> element: stronglyConnectedComponents) {
             System.out.println(element);
         }
+
+        // (2) The code for Tarjan's Algorithm to find the bridges in an undirected graph is running correctly
+        // on LeetCode - https://leetcode.com/problems/critical-connections-in-a-network/description/
     }
 }
