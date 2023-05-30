@@ -1,12 +1,13 @@
 package com.company.recentlearnings.part2;
 
 import java.io.FileNotFoundException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.Stack;
 
 @SuppressWarnings("DuplicatedCode")
@@ -118,15 +119,15 @@ public class RL28GraphRare {
         return ans;
     }
 
-    public static void tarjanDFS(int node, int parent, List<List<Integer>> adj, int[] disc, int[] low,
-                          boolean[] visited, int timer, List<List<Integer>> bridges) {
+    public static void tarjanDFSBridges(int node, int parent, List<List<Integer>> adj, int[] disc, int[] low,
+                                        boolean[] visited, int timer, List<List<Integer>> bridges) {
         visited[node] = true;
         disc[node] = low[node] = timer;
         timer++;
 
         for (Integer neighbour: adj.get(node)) {
             if (!visited[neighbour]) {
-                tarjanDFS(neighbour, node, adj, disc, low, visited, timer, bridges);
+                tarjanDFSBridges(neighbour, node, adj, disc, low, visited, timer, bridges);
                 // We do the following update, because the neighbour's low value may have been updated due to a
                 // Back-Edge and thus we can potentially update the low value of the 'node' as well, as there may be
                 // another path to reach 'node' which would allow us to update the low value of 'node' to a lower value
@@ -154,7 +155,7 @@ public class RL28GraphRare {
 
     // (2) Tarjan's Algorithm for finding the bridges in an undirected graph
     // Resource -> https://www.youtube.com/watch?v=ndfjV_yHpgQ
-    // Time -> O(V + E), Space -> O(V + E) [Since, we would need this much space for the auxiliary transpose graph]
+    // Time -> O(V + E), Space -> O(V)
     // Notes -> (1) Bridge (Def.) - Bridge is an edge in an undirected graph, on the removal of which, the number of
     //              connected components in a graph increases
     //          (2) Back Edge (Def.) - For a node, when it has a visited neighbour and that neighbour is not the parent
@@ -171,14 +172,76 @@ public class RL28GraphRare {
 
         for (int i=0; i<v; i++) {
             if (!visited[i]) {
-                tarjanDFS(i, -1, adj, disc, low, visited, timer, bridges);
+                tarjanDFSBridges(i, -1, adj, disc, low, visited, timer, bridges);
             }
         }
 
         return bridges;
     }
 
-    // (3) Hypothetical Question -> Find the Bridges in a Directed Graph
+    public static void tarjanDFSArticulationPoints(int node, int parent, List<List<Integer>> adj, int[] disc, int[] low,
+                                                   boolean[] visited, int timer, Set<Integer> articulationPoints) {
+        visited[node] = true;
+        disc[node] = low[node] = timer;
+        timer++;
+
+        int children = 0;
+        for (Integer neighbour: adj.get(node)) {
+            if (!visited[neighbour]) {
+                tarjanDFSArticulationPoints(neighbour, node, adj, disc, low, visited, timer, articulationPoints);
+                // We do the following update, because the neighbour's low value may have been updated due to a
+                // Back-Edge and thus we can potentially update the low value of the 'node' as well, as there may be
+                // another path to reach 'node' which would allow us to update the low value of 'node' to a lower value
+                low[node] = Math.min(low[node], low[neighbour]);
+                // Since, we are interested in counting the number of children for the current node, we use an integer
+                // 'children' for that, and increment it as follows
+                children++;
+
+                // Checking if 'node' is an Articulation Point with the following condition
+                if (parent != -1 && low[neighbour] >= disc[node]) {
+                    articulationPoints.add(node);
+                }
+            } else {
+                // The neighbour is visited
+                if (neighbour != parent) { // The neighbour is visited and also not a parent, then it is a Back-Edge
+                    // This basically means that we had another path to reach 'node', taking which we could reach 'node'
+                    // in a lesser time. So, we update low[node]
+                    low[node] = Math.min(low[node], disc[neighbour]);
+                }
+            }
+        }
+
+        // When, children are more than 1, then if we remove this 'node', then the number of connected components will
+        // increase and thus 'node' is an Articulation Point
+        if (parent == -1 && children > 1) {
+            articulationPoints.add(node);
+        }
+    }
+
+    // (3) Tarjan's Algorithm to find the Articulation Points in an undirected graph
+    // Time -> O(V + E), Space -> O(V)
+    // Notes -> (1) Articulation Points (Def.) - Vertices in an undirected graph, on removal of which, the no. of
+    //              connected components increases
+    //          (2) Rest of the helpful notes are written in the code itself
+    public static List<Integer> findArticulationPoints(int v, List<List<Integer>> adj) {
+        int[] disc = new int[v]; // An array to store the discovery time of a node
+        Arrays.fill(disc, -1);
+        int[] low = new int[v]; // Lowest time reachable from a node
+        Arrays.fill(low, -1);
+        boolean[] visited = new boolean[v];
+        int timer = 0; // Use, this variable to keep track of the current time and update disc and low times
+        Set<Integer> articulationPoints = new HashSet<>(); // Using a set to avoid repetition of nodes
+
+        for (int i=0; i<v; i++) {
+            if (!visited[i]) {
+                tarjanDFSArticulationPoints(i, -1, adj, disc, low, visited, timer, articulationPoints);
+            }
+        }
+
+        return new ArrayList<>(articulationPoints);
+    }
+
+    // (4) Hypothetical Question -> Find the Bridges in a Directed Graph
     // Approach -> (1) Remember, the standard question is to find the bridges in an undirected graph using the Tarjan's
     //             algorithm as above
     //             (2) First share the definition of a bridge, i.e. an edge in a graph, on removal of which the no. of
@@ -196,6 +259,7 @@ public class RL28GraphRare {
     //             The solution approach here could be as follows (Brute Force) ->
     //             (a) Traverse over all the edges in the graph
     //             (b) Check if the removal of this edges increases the SCCs in the graph
+
     public static void main(String[] args) throws FileNotFoundException {
         // (1) Example for Kosaraju's Algorithm is as follows -
         int vertices = 5;
@@ -213,7 +277,10 @@ public class RL28GraphRare {
             System.out.println(element);
         }
 
-        // (2) The code for Tarjan's Algorithm to find the bridges in an undirected graph is running correctly
+        // (2) The code for Tarjan's Algorithm to find the Bridges in an undirected graph is running correctly
         // on LeetCode - https://leetcode.com/problems/critical-connections-in-a-network/description/
+
+        // (3) The code for Tarjan's Algorithm to find the Articulation Points in an undirected graph is running
+        // correctly on GFG - https://practice.geeksforgeeks.org/problems/articulation-point-1/1
     }
 }
