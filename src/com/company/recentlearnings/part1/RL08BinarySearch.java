@@ -9,6 +9,11 @@ public class RL08BinarySearch {
     // The above playlist is a good resource to get started with binary search and do some commonly asked question of
     // binary search
 
+    // Helper method to check if index is in bounds
+    private static boolean inRange(int index, int start, int end) {
+        return (index >= start && index <= end);
+    }
+
     // This method takes a sorted array 'arr' and gives the index of the value 'target' if present and '-1' if absent
     public static int binarySearch(int[] arr, int target) {
         int ans = -1;
@@ -137,6 +142,56 @@ public class RL08BinarySearch {
         return result;
     }
 
+    // Find the Floor index i.e. index of the Floor value w.r.t a given 'key'
+    // Time - O(log(n)), Space - O(1) [n = length of the array]
+    // Notes - (1) We are given a sorted array (which is sorted in non-decreasing order)
+    //         (2) The array can contain duplicates values
+    //         (3) If the value of key is smaller than the smallest value in the array, then we return an index
+    //             which is out of bound w.r.t to valid indices i.e. '-1' [Valid indices range is from 0 to n-1]
+    public static int floorIndex(int[] arr, int n, int key) {
+        int ans = -1;
+        int start = 0, end = n-1;
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+            if (arr[mid] == key) {
+                ans = mid;
+                end = mid - 1;
+            } else if (key < arr[mid]) {
+                end = mid - 1;
+            } else {
+                start = mid + 1;
+            }
+        }
+
+        if (ans == -1) ans = end;
+        return ans;
+    }
+
+    // Find the Ceil index i.e. index of the Ceil value w.r.t a given 'key'
+    // Time - O(log(n)), Space - O(1) [n = length of the array]
+    // Notes - (1) We are given a sorted array (which is sorted in non-decreasing order)
+    //         (2) The array can contain duplicates
+    //         (3) If the value of key is greater than the greatest value in the array, then we return an index
+    //             which is out of bound w.r.t to valid indices i.e. 'n' [Valid indices range is from 0 to n-1]
+    public static int ceilIndex(int[] arr, int n, int key) {
+        int ans = -1;
+        int start = 0, end = n-1;
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+            if (arr[mid] == key) {
+                ans = mid;
+                start = mid + 1;
+            } else if (key < arr[mid]) {
+                end = mid - 1;
+            } else {
+                start = mid + 1;
+            }
+        }
+
+        if (ans == -1) ans = start;
+        return ans;
+    }
+
     public static void main(String[] args) throws FileNotFoundException {
         // (1) Simple Binary Search
         int[] arr1 = {2, 4, 5, 7, 15, 16, 21, 29};
@@ -185,5 +240,23 @@ public class RL08BinarySearch {
         int targetValue5 = 7;
         int targetValue5Index = searchInsertPosition(arr5, targetValue5);
         System.out.println("The insert position index for target = " + targetValue5 + ", is index = " + targetValue5Index);
+
+        // (6) Find the Floor Value w.r.t. a given key
+        int keyValue1 = 8;
+        int floorIndex = floorIndex(arr1, arr1.length, keyValue1);
+        if (!inRange(floorIndex, 0, arr1.length-1)) {
+            System.out.println("The Floor value does NOT exist for the given key = " + keyValue1);
+        } else {
+            System.out.println("The Floor value for the given key = " + keyValue1 + ", is = " + arr1[floorIndex]);
+        }
+
+        // (7) Find the Ceil Value w.r.t. a given key
+        int keyValue2 = 8;
+        int ceilIndex = ceilIndex(arr1, arr1.length, keyValue2);
+        if (!inRange(ceilIndex, 0, arr1.length-1)) {
+            System.out.println("The Ceil value does NOT exist for the given key = " + keyValue1);
+        } else {
+            System.out.println("The Ceil value for the given key = " + keyValue1 + ", is = " + arr1[ceilIndex]);
+        }
     }
 }
