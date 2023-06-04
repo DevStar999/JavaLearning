@@ -9,6 +9,20 @@ public class RL30Backtracking {
     /* Backtracking */
     // Resources -> (1) https://www.youtube.com/watch?v=MHXR4PCY8c0&list=PLUcsbZa0qzu3yNzzAxgvSgRobdUUJvz7p&index=11
     // (2) https://www.youtube.com/watch?v=Zq4upTEaQyM
+    // (3) The pattern for solving backtracking questions is as follows ->
+    //     (a) Write a recursive function declaration and give it's parameters the information regarding the
+    //         (i) current state (ii) answer so far (iii) input etc.
+    //     (b) Now in the recursive function, first check if we reached the end condition or gone beyond it.
+    //         If gone beyond, then return empty handed. If reached exact end condition, collect the answer.
+    //     (c) Then run all the options we can make to move to the next state. For each option do the following
+    //          (i) Check if going there is safe (Use an if statement with a boolean checkSafe() function)
+    //          (ii) If it is safe, then make changes to answer collected so far and input as required
+    //          (iii) Make a recursive call to the current function and check if this call return true or not in if
+    //          statement, if it does then, return true for the function.
+    //          (iv) If it does not return true, then Backtrack by reverting the changes made
+    // (4) Whenever, we have to make use of recursion using certain given condition OR it is asked in the question to
+    //     print all combinations, all solutions etc., then we should think about a Backtracking solution for the given
+    //     problem
 
     // (1) Basic method to return all subsets of a given string i.e. Power Set
     public static List<String> printAllSubsetsOfGivenString(String str) {
