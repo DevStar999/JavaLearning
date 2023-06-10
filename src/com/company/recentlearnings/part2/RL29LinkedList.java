@@ -228,6 +228,10 @@ public class RL29LinkedList {
     // This method will return null if there is no cycle in the given LinkedList
     public static Node findFirstNodeOfCycleInLinkedList(Node head) {
         Node meet = meetPointInCycledLinkedList(head);
+        if (meet == null) {
+            return null; // For the case, where there is no cycle in the LinkedList
+        }
+
         Node cur = head;
         // The idea is to iterate from the head and the meet point and at the point where these two meet, that is the
         // node which is the first node of the cycle in the LinkedList (This approach has a prove on why this works)
