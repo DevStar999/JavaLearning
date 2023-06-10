@@ -148,6 +148,40 @@ public class RL30Backtracking {
         return false;
     }
 
+    // We can short of observe a pattern in the 'Backtracking' questions, which are listed as follows -
+    // (1) The question hints at printing one solution with certain conditions or all solutions which meet certain
+    //     conditions.
+    // (2) Backtracking is just recursion with certain conditions. While recursion, explores all the
+    //     branches of a decision tree, Backtracking stops going down a branch if the given conditions are not being met
+    //     on that branch.
+    // (3) So, one thing is for sure that we have to write a recursive function for a Backtracking problem
+    // (4) The structure of the recursive function is as follows -
+    /*
+        // The return type of the function should be boolean or void depending on if we have to find one solution or
+        // many solutions respectively
+        public boolean/void solve( // The list of parameters is as follows -
+            (i) The input given in the question
+            (ii) State parameters (variables with which we define a state in the decision tree) for e.g. curRow,
+            curColumn, curIndex etc.
+            (iii) Parameters with which we have collected/constructed the answer so far
+            (iv) Parameters to collected the fully constructed solution
+        ) {
+            if () {
+                // Since, this is a recursion, we have to write the base case. With the 'if' condition we check if we
+                // have gone beyond the decision space or reached exactly the end of the decision space
+                // (a) If gone beyond the decision space, then simply return
+                // (b) If reached exactly at the end of the decision space, then collect the fully constructed solution
+            }
+
+            // Run all the options/choices we can make to move on to the next state
+                // For each option -
+                // (a) Check if moving onto that option is safe/valid (Use a boolean isSafe()/checkSafe() method)
+                // (b) If it is safe, make the changes as per the question
+                // (c) Then, call the recursive function to move onto the next state
+                // (d) Backtrack the changes made in step (b)
+        }
+    */
+
     public static void main(String[] args) throws FileNotFoundException {
         // (1) Example for Power Set iterative
         List<String> ans = printAllSubsetsOfGivenString("abc");
