@@ -25,7 +25,8 @@ public class RL27GraphMisc {
     // (3) https://www.youtube.com/watch?v=PzznKcMyu0Y, https://www.geeksforgeeks.org/prims-algorithm-using-priority_queue-stl/
     // (4) https://www.youtube.com/watch?v=wjxCG6dOwcY&list=PLUcsbZa0qzu1EhwPcQfbDfl9VitpSUgBp&index=9
 
-    // (1) Topological Sorting -> Time = O(V + E), Auxiliary Space = O(V) [Here, V = no. of vertices, E = no. of edges]
+    // (1.a) Topological Sorting (Iterative) -> Time = O(V + E), Auxiliary Space = O(V)
+    //                              [Here, V = no. of vertices, E = no. of edges]
     // A Topological Sorting is done for a Directed Acyclic Graph (DAG)
     // The following method does a Topological Sorting using an iterative DFS
     // The Time complexity is the same as that of a DFS and the Auxiliary Space is for the final ordering that is stored
@@ -56,6 +57,37 @@ public class RL27GraphMisc {
             }
         }
         List<Integer> fans = new ArrayList<>(); // Final output of the Topological Sorting for the given graph
+        while (ans.size() > 0) {
+            fans.add(ans.pop());
+        }
+        return fans;
+    }
+
+    // (1.a) Topological Sorting (Recursive) -> Time = O(V + E), Auxiliary Space = O(V)
+    //                                          [Here, V = no. of vertices, E = no. of edges]
+    // The following 2 methods are to implement Topological Sorting in a recursive manner
+    private static void topologicalSortingRecursive(int node, ArrayList<ArrayList<Integer>> adj,
+                                                   boolean[] visited, Stack<Integer> ans) {
+        visited[node] = true;
+
+        for (Integer neighbour: adj.get(node)) {
+            if (!visited[neighbour]) {
+                topologicalSortingRecursive(neighbour, adj, visited, ans);
+            }
+        }
+
+        ans.add(node);
+    }
+
+    public static List<Integer> topologicalSortingMain(int v, ArrayList<ArrayList<Integer>> adj) {
+        boolean[] visited = new boolean[v];
+        Stack<Integer> ans = new Stack<>();
+        for (int i=0; i<v; i++) {
+            if (!visited[i]) {
+                topologicalSortingRecursive(i, adj, visited, ans);
+            }
+        }
+        List<Integer> fans = new ArrayList<>();
         while (ans.size() > 0) {
             fans.add(ans.pop());
         }
