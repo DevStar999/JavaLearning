@@ -52,14 +52,21 @@ public class RL25GraphTraversal {
                 connectedComponents++;
                 visited[i] = true;
                 st.push(i);
+                dfsNodeOrder.add(i);
                 while (st.size() > 0) {
-                    int node = st.pop();
-                    dfsNodeOrder.add(node);
+                    int node = st.peek();
+                    int count = 0;
                     for (Integer child : adj.get(node)) {
                         if (!visited[child]) {
                             visited[child] = true;
                             st.push(child);
+                            dfsNodeOrder.add(child);
+                            count++;
+                            break;
                         }
+                    }
+                    if (count == 0) {
+                        st.pop();
                     }
                 }
             }
@@ -68,6 +75,30 @@ public class RL25GraphTraversal {
         System.out.println("The order of travel of nodes in DFS for the given graph is as follows - ");
         System.out.println(dfsNodeOrder);
         System.out.println("The number of connected components in the given graph = " + connectedComponents);
+    }
+
+    private static void dfsRecursive(int node, boolean[] visited, List<List<Integer>> adj, List<Integer> dfsNodeOrder) {
+        visited[node] = true;
+        dfsNodeOrder.add(node);
+
+        for (Integer neighbour: adj.get(node)) {
+            if (!visited[neighbour]) {
+                dfsRecursive(neighbour, visited, adj, dfsNodeOrder);
+            }
+        }
+    }
+
+    public static void dfsRecursiveMain(int v, List<List<Integer>> adj) {
+        List<Integer> dfsNodeOrder = new ArrayList<>();
+        boolean[] visited = new boolean[v];
+        for (int i=0; i<v; i++) {
+            if (!visited[i]) {
+                dfsRecursive(i, visited, adj, dfsNodeOrder);
+            }
+        }
+
+        System.out.println("The order of travel of nodes in DFS for the given graph is as follows - ");
+        System.out.println(dfsNodeOrder);
     }
 
     public static void addEdge(List<List<Integer>> adj, int x, int y) {
@@ -91,5 +122,6 @@ public class RL25GraphTraversal {
 
         bfs(v, adj);
         dfs(v, adj);
+        dfsRecursiveMain(v, adj);
     }
 }
