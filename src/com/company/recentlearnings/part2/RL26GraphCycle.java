@@ -127,6 +127,37 @@ public class RL26GraphCycle {
         return ans;
     }
 
+    // The following methods are for detecting a cycle in a directed graph using recursive DFS
+    private static void isCyclicForDirectedGraphRecursive(int node, ArrayList<ArrayList<Integer>> adj,
+                                                   boolean[] visited, Set<Integer> pass, boolean[] ans) {
+        visited[node] = true;
+        pass.add(node);
+
+        for (Integer neighbour: adj.get(node)) {
+            if (!visited[neighbour]) {
+                isCyclicForDirectedGraphRecursive(neighbour, adj, visited, pass, ans);
+            } else {
+                if (pass.contains(neighbour)) {
+                    ans[0] = true;
+                }
+            }
+        }
+
+        pass.remove(node);
+    }
+
+    public static boolean isCyclicForDirectedGraphMain(int v, ArrayList<ArrayList<Integer>> adj) {
+        boolean[] ans = {false};
+        boolean[] visited = new boolean[v];
+        Set<Integer> pass = new HashSet<>();
+        for (int i=0; i<v; i++) {
+            if (!visited[i]) {
+                isCyclicForDirectedGraphRecursive(i, adj, visited, pass, ans);
+            }
+        }
+        return ans[0];
+    }
+
     public static void addEdge(List<List<Integer>> adj, int x, int y) {
         adj.get(x).add(y);
         adj.get(y).add(x);

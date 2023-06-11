@@ -40,7 +40,8 @@ public class RL25GraphTraversal {
         System.out.println(bfsNodeOrder);
     }
 
-    // DFS -> Time = O(V + E), Auxiliary Space = O(V) [For the Stack] [Here, V = no. of vertices, E = no. of edges]
+    // DFS (Iterative) -> Time = O(V + E), Auxiliary Space = O(V) [For the Stack]
+    //                    [Here, V = no. of vertices, E = no. of edges]
     public static void dfs(int v, List<List<Integer>> adj) {
         boolean[] visited = new boolean[v];
         List<Integer> dfsNodeOrder = new ArrayList<>(); // Order in which the nodes have been traversed over in the DFS
@@ -77,6 +78,8 @@ public class RL25GraphTraversal {
         System.out.println("The number of connected components in the given graph = " + connectedComponents);
     }
 
+    // DFS (Recursive) -> Time = O(V + E), Auxiliary Space = O(V) [For the recursion stack]
+    //                    [Here, V = no. of vertices, E = no. of edges]
     private static void dfsRecursive(int node, boolean[] visited, List<List<Integer>> adj, List<Integer> dfsNodeOrder) {
         visited[node] = true;
         dfsNodeOrder.add(node);
