@@ -3,6 +3,7 @@ package com.company.recentlearnings.part1;
 import java.io.FileNotFoundException;
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.LinkedList;
 import java.util.Random;
 
 public class RL02Basics {
@@ -22,7 +23,7 @@ public class RL02Basics {
         // Visit the class 'WrapperClasses.java' in the package 'datatypes' in this project
 
         // 'Deque' interface (child interface of 'Queue') - Just offers some additional methods
-        Deque<Integer> q3 = new ArrayDeque();
+        Deque<Integer> q3 = new ArrayDeque(), q4 = new LinkedList<>();
         q3.addFirst(53); // addFirst() method is used to add an element at the head
         q3.addLast(89); // addLast() method is same as add() method which is used to add an element at the tail
         int pollFirstElement = q3.pollFirst(); // pollFirst() method will remove element at head, same as poll() method
